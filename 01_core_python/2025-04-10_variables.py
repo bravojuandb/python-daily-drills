@@ -45,7 +45,7 @@ inventory = """title,author,price
 csv_file = io.StringIO(inventory)
 reader = csv.DictReader(csv_file)
 
-
+cleaned_rows = []
 
 # Assign raw (uncleaned) values from each CSV column to clearly named variables
   
@@ -62,4 +62,25 @@ for row in reader:
     print(f"   price={price_raw!r}, type={type(price_raw)}")
     print("-" * 50)
 
+      # Clean and convert values.
+    try:
+        title = title_raw.strip().strip('"')
+        author = author_raw.strip().strip('"')
+        price = price_raw.strip().strip('"')
 
+        print("Cleaned values and types:")
+        print(f"   title={title!r}, type={type(title)}")
+        print(f"   author={author!r}, type={type(author)}")
+        print(f"   price={price}, type={type(price)}")
+
+        # Add cleaned row to list
+        cleaned_rows.append({
+            "title" : title,
+            "author" : author,
+            "price" : price
+        })
+        
+    except Exception as e:
+      print(f"Skipped row due to error: {e}")
+
+    print("-" * 50)
