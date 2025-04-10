@@ -61,3 +61,5 @@ for row in reader:
     print(f"   author={author_raw!r}, type={type(author_raw)}")
     print(f"   price={price_raw!r}, type={type(price_raw)}")
     print("-" * 50)
+
+
