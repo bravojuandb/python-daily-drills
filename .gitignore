@@ -1,0 +1,21 @@
+# macOS system files
+.DS_Store
+
+# Byte-compiled / optimized / Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+
+# VS Code settings
+.vscode/
+
+# OS metadata
+Thumbs.db
+Desktop.ini
