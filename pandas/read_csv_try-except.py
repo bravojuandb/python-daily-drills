@@ -17,6 +17,7 @@ COMMON ERRORS ENCOUNTERED:
 """
 from pathlib import Path
 import pandas as pd
+import sys
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "sample.csv"
@@ -28,16 +29,16 @@ try:
     df = pd.read_csv(DATA_DIR, encoding= "latin1", delimiter=";")
     print(">>> DataFrame loaded")
     print(f"\n This is a sample of the data frame:\n {df}")
-    print(f"\nThese are the column names of the data frame: \n {df.columns}")
+    print(f"\nThese are the column names of the data frame:\n {df.columns}")
     print("\nColumn types and non-null counts:")
     print(df.info())
 
 except FileNotFoundError:
-    sys.stderr.write(f"Error: The file '{DATA_DIR} was not found")
+    sys.stderr.write(f"Error: The file '{DATA_DIR} was not found.\n")
     sys.exit(1)
 except pd.errors.ParserError as error:
-    sys.stderr.write(f"Error: Pandas could not parse the file: {error}")
+    sys.stderr.write(f"Error: Pandas could not parse the file: {error}\n")
     sys.exit(1)
 except Exception as error:
-    sys.stderr.write(f"An unexpected error occurred: {error}")
+    sys.stderr.write(f"An unexpected error occurred: {error}\n")
     sys.exit(1)
