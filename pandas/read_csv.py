@@ -29,6 +29,6 @@ print(">>> DataFrame loaded")
 
 print(f"\n This is a sample of the data frame:\n {df}")
 
-print(f"\nThese are the column names of the data frame: \n {df.columns}")
+print(f"\nThese are the column names of the data frame:\n {df.columns}")
 
 print(f"\nColumn types and non-null counts:\n {df.info()}")
