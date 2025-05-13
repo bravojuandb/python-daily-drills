@@ -5,7 +5,7 @@ This is Version 2 of a basic script that demonstrates:
 - How to read a CSV file using Pandas
 - How to use `pathlib` to manage file paths
 - How to make the script runnable from any directory using `__file__`
-- Convert it into a function and wrap it into a try except block
+- Wrap the script into a try except block, and add sys basic error handling and graceful exit.
 
 This script is part of my supplier data pipeline project
 
