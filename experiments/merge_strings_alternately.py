@@ -3,17 +3,23 @@ Leetcode string merging problem.
 
 Features:
 
+Plain script version
 """
-# Let´s start creating a method to say Hello
+# Define the two words
 
-class Greeter:
-    def say_hello (self):
-        print("Hello Socrates!")
+word1 = "abc"
+word2 = "pqrs"
 
-# Create an instance of the class
+result = []
 
-g = Greeter
+max_length = max(len(word1), len(word2))
 
-# Call the method
+for i in range(max_length):
+    if i < len(word1):
+        result.append(word1[i])
+    if i < len(word2):
+        result.append(word2[i])
 
-g.say_hello()
+merged = ''.join(result)
+
+print(merged)
