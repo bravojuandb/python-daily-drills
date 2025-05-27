@@ -1,4 +1,9 @@
 
+"""
+Count the words of a .txt file
+
+"""
+
 import os
 
 # Get the folder where the script itself is located
