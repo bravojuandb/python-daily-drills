@@ -9,8 +9,9 @@ from pathlib import Path
 
 class TextAnalyzer:
 
-    def __init__(self, filepath):
-        self.filepath = Path(filepath).resolve()
+    def __init__(self, filename):
+        script_dir = Path(__file__).resolve().parent
+        self.filepath = (script_dir / filename).resolve()
         self.text = ''
         self.words = []
         self.word_count = 0
