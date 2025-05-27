@@ -14,7 +14,8 @@ with open(file_path, "r", encoding='utf-8') as file:
 words = text.split()
 word_count = len(words)
 
-print(f"Number of words: {word_count}")
-print(script_dir)
-print(__file__)
-print(type(text))
+print(f"\n This is the list: {words}")
+print(f"\n Number of words: {word_count}")
+print(f"\n This is the folder where the script is: {script_dir}")
+print(f"\n This is the path to the python script: {__file__}")
+print(type(words))
