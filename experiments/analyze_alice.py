@@ -28,7 +28,7 @@ def clean_text_file(text: str, preview: bool = False ) :
     - Normalizing whitespace
     """
     text = text.lower()
-    text = re.sub(r"[.,!?;:¿¡()\"'-]", "", text)  # Remove punctuation
+    text = re.sub(r"[.,!?;:¿¡()\"“”‘’'-]", "", text)  # Remove punctuation
     text = re.sub(r"\s+", " ", text).strip()  # Remove extra spaces
 
     if preview:
@@ -40,7 +40,7 @@ def clean_text_file(text: str, preview: bool = False ) :
 
 if __name__ == "__main__":
     # Example usage
-    file_path = Path(__file__).parent / "alice.txt"  # Replace with your actual file path
+    file_path = Path(__file__).parent / "Alice.txt"  # Replace with your actual file path
     try:
         text = read_text_file(file_path)
         text = clean_text_file(text, True)
