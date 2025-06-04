@@ -26,6 +26,8 @@ def clean_text_file(text: str, preview: bool = False ) :
     - Lowercasing all characters
     - Removing punctuation marks
     - Normalizing whitespace
+
+    Returns a cleaned string.
     """
     text = text.lower()
     text = re.sub(r"[.,!?;:¿¡()\"“”‘’'-]", "", text)  # Remove punctuation
