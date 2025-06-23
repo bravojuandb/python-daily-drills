@@ -6,4 +6,13 @@ the first non-repeating character. If there's no unique character, treturn -1.
 
 """
 
-def 
+from collections import Counter
+
+def first_unique_char(s: str) -> int:
+    counts = Counter(s)
+    for i, char in enumerate(s):
+        if counts[char] == 1:
+            return i
+    return -1
+
+print(first_unique_char("loveleetcode"))
