@@ -19,3 +19,5 @@ venv/
 # OS metadata
 Thumbs.db
 Desktop.ini
+
+efficiency_checker.py
