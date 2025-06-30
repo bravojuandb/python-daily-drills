@@ -6,5 +6,27 @@ Write a function that removes duplicates from a list without changing the order 
 
 """
 
+from collections import Counter
+
 def remove_duplicates(nums: list[int]) -> list[int]:
-    pass
+    counts = Counter(nums)
+    single_nums = []
+    dictionary = counts.items()
+    for i, j in dictionary:
+        single_nums.append(i)
+    return single_nums
+
+def remove_duplicates(nums: list[int]) -> list[int]:
+    return list(Counter(nums).keys())
+
+def remove_duplicates(nums: list[int]) -> list[int]:
+    seen = set()
+    result = []
+    for num in nums:
+        if num not in seen:
+            seen.add(num)
+            result.append(num)
+    return result
+
+print(remove_duplicates([5, 4, 1, 2, 2, 3, 1]))
+
