@@ -2,7 +2,6 @@
 Write a function count_all_duplicates(lst) that:
 
 Returns a dictionary containing only the elements that appear more than once.
-Tracks duplicate counts as you go.
 Avoids a second pass (i.e. don’t filter after counting)
 
 >>> count_all_duplicates([1, 2, 2, 3, 1, 1])
@@ -18,7 +17,6 @@ Use two dictionaries:
     duplicates: to store elements only when their count reaches 2
 
 Return duplicates at the end.
-Avoid dictionary comprehensions or collections.Counter
 Time complexity: O(n)
 
 """
@@ -28,6 +26,11 @@ logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 logger = logging.getLogger(__name__)
 
 def count_all_duplicates(l:list) -> dict:
+    """ 
+    Count all duplicates in a list using dictionary comprehensions.
+    Return a dictionary where the keys are items that appear more than once,
+    and values are the total number of times they appear.
+    """
     counts = {}
     logger.debug(f"Starting count of items in list: {l}")
 
@@ -44,7 +47,11 @@ def count_all_duplicates(l:list) -> dict:
 
 
 def count_all_duplicates_long(l:list) -> dict:
-    
+    """
+    Count all the duplicates in a list using step by step logic.
+    Tracks items as they appear and builds the duplicates dictionary
+    during the counting process (avoids a second pass)
+    """
     counts = {}
     duplicates = {}
     logger.debug(f"Starting count of items in list: {l}")
