@@ -29,5 +29,5 @@ Simulate real-world data workflows: read a file → transform it → write it �
 
             “Give me a Turing-style Python drill from Pillar X, Level Y.”
 
-            being X the pillar number, and Y the diggiculty: easy, medium or hard
+            being X the pillar number, and Y the difficulty: easy, medium or hard
 
