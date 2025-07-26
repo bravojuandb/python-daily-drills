@@ -39,4 +39,19 @@ Hidden Test Case Ideas:
 
 def group_by_length(words: list[str]) -> dict[int, list[str]]:
 
-    
+    groups = {}
+    seen = set()
+    for word in words:
+        word_lc = word.lower()
+        if word_lc not in seen:
+            seen.add(word_lc)
+            lenght = len(word_lc)
+            if lenght not in groups:
+                groups[lenght] = set()
+            groups[lenght].add(word_lc)
+
+    print(groups)
+
+
+
+group_by_length(["Tree", "house", "CAT", "tree", "mouse", "cat", "House"])
