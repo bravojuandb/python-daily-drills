@@ -21,9 +21,37 @@ Build full scripts with argparse, logging, file I/O, and modular design (main())
      
 Simulate real-world data workflows: read a file → transform it → write it — and organize code well.
 
-## Methodology
+## GitHub Workflow
 
-- In each Python study seesion, make as many timed drills as I can.
+1. Create 4 milestones (one per Pillar):
+   - Pillar 1: Fluency & Logic  
+   - Pillar 2: Clean Code & Testing  
+   - Pillar 3: Script Engineering  
+   - Pillar 4: Pipeline Thinking  
+
+2. Create one issue per drill, linked to the right milestone.  
+   Use labels like `pillar:1`, `difficulty:medium`, `subcategory:functions`.
+
+3. Create a branch from the issue using GitHub CLI:
+   ```bash
+   gh issue develop <issue-number>
+   ```
+
+4. Solve the drill, make commits, then open a Pull Request.  
+   Use commit messages like:
+   ```
+   feat: add reverse_unique with set logic
+   ```
+
+5. Merge the PR when done.
+
+6. Plan each week as a sprint using GitHub Projects.  
+   One project = one week = one sprint.  
+   Track progress with columns: `to do, in progress ,done`.
+
+
+
+## Methodology
 
 - Chatgpt prompt:
 
