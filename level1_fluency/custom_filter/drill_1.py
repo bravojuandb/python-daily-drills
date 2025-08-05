@@ -23,7 +23,7 @@ EXAMPLES:
 def is_even (num:int) -> bool:
         return num % 2 == 0
 
-def custom_filter (predicate:bool, values:list) -> list:
+def custom_filter (predicate, values:list) -> list:
     
     result = []
     for value in values:

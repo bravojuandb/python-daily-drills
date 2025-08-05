@@ -33,3 +33,28 @@ Additionally:
 🧪 BONUS:
     Write 2–3 test cases using `assert` to confirm behavior.
 """
+from typing import Callable, Any
+
+
+
+def custom_filter(predicate:Callable[[Any], bool], values: list) -> list:
+    
+    if not callable(predicate):
+        raise TypeError("Predicate must be a callable")
+
+    try:
+        iter(values)
+    except TypeError:
+        raise TypeError("Values must be an iterable")
+    
+    result = []
+    for value in values:
+        if predicate(value):
+            result.append(value)
+    return result
+
+
+def is_str(item) -> bool:
+    return isinstance(item, str)
+
+print(custom_filter(is_str, [1, "a", True, "b", 3.14]))
