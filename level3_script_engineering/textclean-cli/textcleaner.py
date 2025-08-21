@@ -5,14 +5,19 @@ Usage examples:
   python textcleaner.py --input input.txt --output cleaned.txt --lower
   python textcleaner.py --input input.txt --output cleaned.txt --trim --collapse-spaces --lower --strip-empty
 """
-
+import logging
 from pathlib import Path
 import argparse
 import sys
 
 def configure_logging(verbose: bool) -> None:
-    """Stub: will set logging level/format in the next step."""
-    pass
+    """Configure root logging: INFO when verbose, else WARNING."""
+    level = logging.INFO if verbose else logging.WARNING
+    logging.basicConfig(
+        level=level,
+        format="%(levelname)s - %(message)s",
+    )
+    logging.info("Logging configured (level=%s)", logging.getLevelName(level))
 
 def run(args: argparse.Namespace) -> None:
     """Stub: will perform validation, cleaning, and I/O in later steps."""
