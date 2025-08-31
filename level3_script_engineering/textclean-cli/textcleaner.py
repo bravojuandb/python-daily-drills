@@ -20,8 +20,44 @@ def configure_logging(verbose: bool) -> None:
     logging.info("Logging configured (level=%s)", logging.getLevelName(level))
 
 def run(args: argparse.Namespace) -> None:
-    """Stub: will perform validation, cleaning, and I/O in later steps."""
-    raise NotImplementedError("Implementation arrives in Steps 3–5.")
+    """
+    Validate paths and prepare for cleaning.
+    (Next steps will add the actual line processing.)
+    """
+    in_path: Path = args.input
+    out_path: Path = args.output
+
+    # Log enabled options for traceability
+    logging.info(
+        "Start | input=%s output=%s options={trim=%s, collapse_spaces=%s, lower=%s, strip_empty=%s}",
+        in_path, out_path, args.trim, args.collapse_spaces, args.lower, args.strip_empty
+    )
+
+    # 1) Input must exist and be a file
+    if not in_path.exists():
+        logging.error("Input file does not exist: %s", in_path)
+        sys.exit(2)
+    if not in_path.is_file():
+        logging.error("Input path is not a file: %s", in_path)
+        sys.exit(2)
+
+    # 2) Guard against same input/output (after resolving symlinks)
+    try:
+        if in_path.resolve() == out_path.resolve():
+            logging.error("Input and output paths refer to the same file: %s", in_path)
+            sys.exit(2)
+    except FileNotFoundError:
+        # resolve() can raise if parent chains don’t exist yet; that’s okay.
+        pass
+
+    # 3) Ensure output parent dir exists
+    out_parent = out_path.parent
+    if out_parent and not out_parent.exists():
+        logging.info("Creating output directory: %s", out_parent)
+        out_parent.mkdir(parents=True, exist_ok=True)
+
+    # Hand off to the next steps (cleaning not implemented yet)
+    raise NotImplementedError("Cleaning pipeline (Steps 4–5) not implemented yet.")
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
