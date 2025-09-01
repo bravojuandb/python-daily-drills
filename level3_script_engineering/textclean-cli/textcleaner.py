@@ -9,6 +9,7 @@ import logging
 from pathlib import Path
 import argparse
 import sys
+import re
 
 def configure_logging(verbose: bool) -> None:
     """Configure root logging: INFO when verbose, else WARNING."""
@@ -56,10 +57,15 @@ def run(args: argparse.Namespace) -> None:
         logging.info("Creating output directory: %s", out_parent)
         out_parent.mkdir(parents=True, exist_ok=True)
 
+    # Build the transform pipeline (Step 4)
+    pipeline = build_pipeline(args)
+    logging.info("Pipeline steps: %s", [fn.__name__ for fn in pipeline])
+
     # Hand off to the next steps (cleaning not implemented yet)
     raise NotImplementedError("Cleaning pipeline (Steps 4–5) not implemented yet.")
 
 def build_parser() -> argparse.ArgumentParser:
+
     parser = argparse.ArgumentParser(
         prog="textcleaner",
         description="Clean a UTF-8 text file via selectable steps (trim, collapse spaces, lower, strip-empty).",
@@ -98,6 +104,53 @@ def build_parser() -> argparse.ArgumentParser:
     )
     return parser
 
+# --- Cleaning step functions ---
+
+def step_trim(line: str) -> str:
+    """Strip leading/trailing whitespace."""
+    return line.strip()
+
+# IMPORTANT: collapse only SPACE characters, not tabs.
+SPACE_RUN = re.compile(r" {2,}")
+
+def step_collapse_spaces(line: str) -> str:
+    """Replace runs of 2+ spaces with a single space (line-wise)."""
+    return SPACE_RUN.sub(" ", line)
+
+def step_lower(line: str) -> str:
+    """Lowercase the line."""
+    return line.lower()
+
+def should_keep_line(line: str, strip_empty: bool) -> bool:
+    """
+    Return True if the line should be kept.
+    If strip_empty is True, drop empty/whitespace-only lines.
+    """
+    if not strip_empty:
+        return True
+    return line.strip() != ""
+
+def build_pipeline(args: argparse.Namespace):
+    """
+    Build the ordered list of transform functions based on flags.
+    Order per README: trim -> collapse-spaces -> lower
+    (strip-empty is a filter, applied after transforms)
+    """
+    pipeline = []
+    if args.trim:
+        pipeline.append(step_trim)
+    if args.collapse_spaces:
+        pipeline.append(step_collapse_spaces)
+    if args.lower:
+        pipeline.append(step_lower)
+    return pipeline
+
+def apply_pipeline(line: str, pipeline) -> str:
+    """Apply each transform in order to a single line."""
+    for fn in pipeline:
+        line = fn(line)
+    return line
+
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
@@ -107,3 +160,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    
