@@ -1,14 +1,21 @@
 # Python Daily Drills
 
-This is my Python trainer.
+> “Καὶ τὰ μικρὰ μεγάλα ἔσται, ἐὰν ἐπιμονῇ κρατῇς.”  
+> *Even small things become great if you persist.* — *Demosthenes*  
 
-It's built around **4 essential pillars**:
+This is my Python trainer, a series of drills organized around four pillars.  
+Instead of standing separately, these pillars are built like concentric layers, each reinforcing the other.  
+
+Each pillar is composed of atomic exercises, organized into subcategories (one commit per exercise, one issue per subcategory).  
+
+**4 essential pillars**:
 
 ---
 
 ## Pillar 1 — Fluency & Logic (Grammar of Python)
 - **Goal:** Think in Python without stumbling on syntax.  
 - **What it covers:** Core data types, loops, functions, comprehensions, error handling, I/O basics.  
+- [Contents](pillar1/README.md)
 
 ---
 
