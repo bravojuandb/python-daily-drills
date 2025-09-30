@@ -57,11 +57,11 @@
 ---
 
 ## 5. Iteration & Sequence Tricks
-- Forward & Backward Iteration → `for`, `reversed()`
-- Step-Sized Slicing → `seq[start:stop:step]`
-- Nested Loop Grid Builder → nested `for`
-- Flatten a Nested List → comprehension `[x for sub in L for x in sub]`
-- Enumerate with Index → `enumerate()`
+- ✅ Forward & Backward Iteration → `for`, `reversed()`
+- ✅ Step-Sized Slicing → `seq[start:stop:step]`
+- ✅ Nested Loop Grid Builder → nested `for`
+- ✅ Flatten a Nested List → comprehension `[x for sub in L for x in sub]`
+- ✅ Enumerate with Index → `enumerate()`
 
 ---
 
