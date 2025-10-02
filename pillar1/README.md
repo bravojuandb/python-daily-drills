@@ -66,11 +66,11 @@
 ---
 
 ## 6. Logic Puzzles
-- FizzBuzz Variations → `%`, `if/else`
-- Palindrome Detector → slicing `[::-1]`
-- Duplicate Finder in List → `set()`, `collections.Counter`
-- Balanced Parentheses Checker → stack (`list`), loop
-- Prime Number Tester → loops, `%`
+- ✅ FizzBuzz Variations → `%`, `if/else`
+- ✅ Palindrome Detector → slicing `[::-1]`
+- ✅ Duplicate Finder in List → `set()`, `collections.Counter`
+- ✅ Balanced Parentheses Checker → stack (`list`), loop
+- ✅ Prime Number Tester → loops, `%`
 
 ---
 
