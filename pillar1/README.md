@@ -75,9 +75,9 @@
 ---
 
 ## 7. Error Handling
-- Basic Try/Except → `try / except`
-- Raise Custom Exception → `raise`
-- Custom Error Message Formatter → `raise Exception("msg")`
+- ✅ Basic Try/Except → `try / except`
+- ✅ Raise Custom Exception → `raise`
+- ✅ Custom Error Message Formatter → `raise Exception("msg")`
 
 ---
 
