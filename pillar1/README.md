@@ -82,8 +82,8 @@
 ---
 
 ## 8. Input/Output Basics
-- User Input Echo → `input()`
-- Number Guessing with Input → `input()`, `int()`
-- Print Formatting Challenge → `print()`, `f-strings`
-- Simple File Reader → `open(..., "r")`, `.readlines()`
-- Simple File Writer → `open(..., "w")`, `.write()`
+- ✅ User Input Echo → `input()`
+- ✅ Number Guessing with Input → `input()`, `int()`
+- ✅ Print Formatting Challenge → `print()`, `f-strings`
+- ✅ Simple File Reader → `open(..., "r")`, `.readlines()`
+- ✅ Simple File Writer → `open(..., "w")`, `.write()`
