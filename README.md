@@ -19,9 +19,10 @@ Each pillar is composed of atomic exercises, organized into subcategories (one c
 
 ---
 
-## Pillar 2 — Algorithms & Problem Solving (Sharpening the Mind)
-- **Goal:** Learn to break down problems into steps and solve them systematically.  
-- **What it covers:** Sorting, searching, string/array challenges, recursion, basic data structures (stacks, queues, hashmaps).  
+## Pillar 2 — Data Structures & Problem Solving (Bridging Logic and Data)
+- **Goal:** Develop algorithmic thinking while manipulating real data collections.  
+- **What it covers:** Sorting, searching, aggregating, recursion, and data-structure patterns (lists, dicts, sets, stacks, queues).  
+- [Contents](pillar2/README.md)
 
 ---
 
