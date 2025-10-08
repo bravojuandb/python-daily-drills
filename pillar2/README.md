@@ -1,11 +1,12 @@
 # Pillar 2 — Data Structures & Problem Solving (Bridging Logic and Data)
 
 ## 1. Foundational Algorithms
-- Sorting Numbers → `sorted()`, custom `key`
-- Sorting Dicts by Value → `sorted(dict.items(), key=...)`
-- Binary Search Implementation → `while low <= high`
-- Counting Frequencies → `collections.Counter`
-- Aggregating Totals → `sum()`, grouping by key
+- ✅ Sorting Numbers → `sorted()`, custom `key`
+- ✅ Sorting Dicts by Value → `sorted(dict.items(), key=...)`
+- ✅ Binary Search Implementation → `while low <= high`
+- ✅ Counting Frequencies → `collections.Counter`
+- ✅ Aggregating Totals → `sum()`, grouping by key
+- ✅ BONUS: Group Transactions by customer
 - Manual Min/Max Finder → loops
 - Detecting Duplicates → sets
 - Intersection of Lists → `set(list1) & set(list2)`
