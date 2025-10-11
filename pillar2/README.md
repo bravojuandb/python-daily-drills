@@ -7,11 +7,11 @@
 - ✅ Counting Frequencies → `collections.Counter`
 - ✅ Aggregating Totals → `sum()`, grouping by key
 - ✅ BONUS: Group Transactions by customer
-- Manual Min/Max Finder → loops
-- Detecting Duplicates → sets
-- Intersection of Lists → `set(list1) & set(list2)`
-- Flatten Nested List → `[x for sub in L for x in sub]`
-- Big-O Estimation (mental drills)
+- ✅ Manual Min/Max Finder → loops
+- ✅ Detecting Duplicates → sets
+- ✅ Intersection of Lists → `set(list1) & set(list2)`
+- ✅ Flatten Nested List → `[x for sub in L for x in sub]`
+- ✅ Big-O Estimation (mental drills)
 
 ---
 
