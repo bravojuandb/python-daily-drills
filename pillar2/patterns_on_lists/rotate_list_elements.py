@@ -40,10 +40,10 @@ def rotate_to_the_right(nums: list[int], step: int) -> list[int]:
     
     except Exception as e:
         logging.error(f"Rotation failed: {e}")
-        return []
+        raise
 
 
-nums = [10, 20, 30, 40, 50]
-
-print(rotate_to_the_right(nums, 10))
+if __name__ == "__main__":
+    nums = [10, 20, 30, 40, 50]
+    print(rotate_to_the_right(nums, 10))
 
