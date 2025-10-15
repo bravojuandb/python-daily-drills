@@ -17,10 +17,10 @@
 
 ## 2. Data Structure Patterns
 ### Lists
-- Append/Extend & In-Place Sort  
-- Merge Two Lists Alternately  
-- Rotate List Elements (left/right)
-- Slice Copy vs Reference Test
+- ✅ Append/Extend & In-Place Sort  
+- ✅ Merge Two Lists Alternately  
+- ✅ Rotate List Elements (left/right)
+- ✅ Slice Copy vs Reference Test
 
 ### Tuples
 - Swap Variables via Tuple Unpacking  
