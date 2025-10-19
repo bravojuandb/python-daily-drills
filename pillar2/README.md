@@ -23,22 +23,22 @@
 - ✅ Slice Copy vs Reference Test
 
 ### Tuples
-- Swap Variables via Tuple Unpacking  
-- Store Immutable Records  
-- Tuple as Dict Keys (coordinates, pairs)
+- ✅ Swap Variables via Tuple Unpacking  
+- ✅ Store Immutable Records  
+- ✅ Tuple as Dict Keys (coordinates, pairs)
 
 ### Sets
-- Remove Duplicates  
-- Check Subsets/Supersets  
-- Compare Unique Items Across Lists  
-- Set-Based Membership Speed Test  
+- ✅ Remove Duplicates  
+- ✅ Check Subsets/Supersets  
+- ✅ Compare Unique Items Across Lists  
+- ✅ Set-Based Membership Speed Test  
 
 ### Dicts
-- Count Word Occurrences  
-- Group Items by Category  
-- Merge Two Dicts with Conflict Rules  
-- Invert a Dict (value→key)
-- Nested Dict Access (safe `.get()`)
+- ✅ Count Word Occurrences  
+- ✅ Group Items by Category  
+- ✅ Merge Two Dicts with Conflict Rules  
+- ✅ Invert a Dict (value→key)
+- ✅ Nested Dict Access (safe `.get()`)
 
 ### Stack/Queue Simulations
 - Build Stack with `list` → `.append()` / `.pop()`
