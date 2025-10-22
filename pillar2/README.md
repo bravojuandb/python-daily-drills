@@ -41,10 +41,10 @@
 - ✅ Nested Dict Access (safe `.get()`)
 
 ### Stack/Queue Simulations
-- Build Stack with `list` → `.append()` / `.pop()`
-- Build Queue with `collections.deque`
-- Evaluate Expression (LIFO logic)
-- Check Balanced Brackets (stack)
+- ✅ Build Stack with `list` → `.append()` / `.pop()`
+- ✅ Build Queue with `collections.deque`
+- ✅ Evaluate Expression (LIFO logic)
+- ✅ Check Balanced Brackets (stack)
 
 ---
 
