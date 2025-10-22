@@ -49,15 +49,16 @@
 ---
 
 ## 3. Applied Challenges
-- CSV Row Aggregator (manual parsing)
+*Drills marked with * are to be treated as project_style drills*
+- CSV Row Aggregator (manual parsing) *
 - Word Frequency Counter (text file)
 - Unique Visitors Counter (from log entries)
 - Detect Top-N Items (sorting by counts)
 - Group Transactions by Customer (dict of lists)
-- Simple ETL Transform (clean → aggregate → output)
-- Recursive Directory Walk (simulate folder scan)
-- Recursively Flatten Nested Dict
-- Merge and Deduplicate JSON-like lists
+- Simple ETL Transform (clean → aggregate → output) *
+- Recursive Directory Walk (simulate folder scan) *
+- Recursively Flatten Nested Dict *
+- Merge and Deduplicate JSON-like lists *
 - Build Mini Leaderboard (sort + dict)
 
 ---
