@@ -62,6 +62,87 @@ Stretch goals (optional)
   (you may ignore thousands separators or normalize them).
 - Use `decimal.Decimal` for currency-safe arithmetic.
 - Emit results as an iterator (generator) to avoid building a large list in memory.
-
-Be quick and precise. Paste your solution when ready; I’ll review and point out caveats for scaling this up.
 """
+# ------------------------------------------------------------------------------
+# Raw input
+
+file = """
+
+customer_id,date,amount_eur,status
+
+C-001,2025-01-03,    100.00,PAID
+C-001,2025-01-18,25.50,REFUND
+
+C-002,2025-01-09,  300.00 , PAID
+# ignored comment
+C-001,2025-02-01,75.00,PAID
+"This is a corrupted line"
+
+C-001,2025-02-02,75.00
+C-002,2025-01-xx,50.00,PAID
+C-002,2025-01-11,20,REFUND
+
+"""
+
+
+def row_aggregator(file: str) -> dict:
+    """
+    Aggregate CSV-like transaction rows by customer and month 
+    without using csv or pandas.
+    """
+    errors = 0
+    totals = {}
+
+    for raw in file.split("\n"):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue # Skip comments or blank lines
+        if line.lower().startswith("customer_id"):
+            continue # Skip column names row
+
+        # Analyze each line
+        parts = [p.strip() for p in line.split(",")]
+
+        # Sanity check for missing fields
+        if len(parts) != 4:
+            errors += 1
+            continue
+
+        customer_id, date, amount_eur, status = parts
+
+        # Date to month ------------------------------------------------------
+        if not (len(date) == 10 and date[4] == "-" and date[7] == "-"):
+            errors += 1
+            continue
+        month = date[:7]
+
+        # Amount (negative if REFUND)-----------------------------------------
+        try:
+            amount = float(amount_eur)
+        except ValueError:
+            error += 1
+            continue
+        if status.upper() == "REFUND":
+            amount = -amount
+        elif status.upper() != "PAID":
+            error += 1
+            continue
+
+        # Build dictionary (composite key : aggregated amount per month)-------
+        key = (customer_id, month)
+        totals[key] = totals.get(key, 0.0) + amount
+
+    rows = []
+
+    for (cid, m), total in sorted(totals.items()):
+        rows.append(f"{cid},{m},{total:.2f}")
+
+    return rows, errors
+
+
+
+rows, errors = row_aggregator(file)
+
+# join the rows with newline characters
+print("\n".join(rows))
+print(f"\nErrors: {errors}")
