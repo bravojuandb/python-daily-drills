@@ -58,8 +58,8 @@
 - ✅ Simple ETL Transform (clean → aggregate → output) *
 - ✅ Recursive Directory Walk (simulate folder scan) *
 - ✅ Recursively Flatten Nested Dict *
-- Merge and Deduplicate JSON-like lists *
-- Build Mini Leaderboard (sort + dict)
+- ✅ Merge and Deduplicate JSON-like lists *
+- ✅ Build Mini Leaderboard (sort + dict)
 
 ---
 
