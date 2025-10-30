@@ -70,10 +70,33 @@
 - Optimize Nested Loops into Dict Lookup
 - Analyze Algorithmic Complexity (O(n), O(log n))
 
----
+## 5. Common Patterns
 
-## Outcome
-By finishing Pillar 2 I’ll:
-- Know *how* each structure behaves under load  
-- Write small, clean, optimized routines  
-- Be ready for Pillar 3’s real data flows (pandas, SQL, ETL)
+Each pattern concludes with a **15-minute drill** — a concise, practical exercise to reinforce the concept.
+
+- **Iteration & Filtering** → selective traversal  
+  *Drill:* read a CSV and filter only rows where "status" == "active".
+
+- **Mapping & Transformation** → same size, new meaning  
+  *Drill:* convert a list of strings into dicts with derived fields (e.g. split "name,age" → {"name": ..., "age": ...}).
+
+- **Aggregation** → reduction  
+  *Drill:* sum or average numerical values from a JSON list.
+
+- **Grouping** → partition + aggregate  
+  *Drill:* group transactions by customer and compute total amount.
+
+- **Searching** → efficient lookup  
+  *Drill:* implement linear and binary search on a sorted list of IDs.
+
+- **Recursion** → self-similar decomposition  
+  *Drill:* recursively count files in nested folders.
+
+- **Sorting & Ranking** → comparison + order  
+  *Drill:* sort products by price and output the top 5.
+
+- **State Tracking** → remember what matters  
+  *Drill:* validate a string of parentheses using a stack.
+
+- **Error-Aware Processing** → fail safely  
+  *Drill:* safely parse rows from a CSV with missing fields and log errors.
