@@ -92,3 +92,19 @@ Your turn — reply with:
 ...
 10) O(?) – short reason
 """
+
+# Answers:
+
+"""
+1. O(log n) — i doubles each step; iterations ≈ log₂(len(arr)).
+2. O(n) — loop runs n times.
+3. O(log n) — i is halved each iteration until it reaches 0.
+4. O(n) — single pass summing all elements.
+5. O(log n) — binary search halves the search interval each step.
+6. O(n) — two-pointer scan; each index moves at most n steps.
+7. O(log n) — i doubles each iteration.
+8. O(n) — visiting every 3rd item still linear.
+9. O(n) — one pass for prefix sums.
+10. O(log n) — n is halved each step.
+
+"""
