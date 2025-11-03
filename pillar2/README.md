@@ -64,11 +64,11 @@
 ---
 
 ## 4. Performance Awareness
-- Benchmark List vs Set Lookup → `%timeit`
-- Compare Loop vs Comprehension Runtime
-- Memory Use via `sys.getsizeof()`
-- Optimize Nested Loops into Dict Lookup
-- Analyze Algorithmic Complexity (O(n), O(log n))
+- ✅ Benchmark List vs Set Lookup → `%timeit`
+- ✅ Compare Loop vs Comprehension Runtime
+- ✅ Memory Use via `sys.getsizeof()`
+- ✅ Optimize Nested Loops into Dict Lookup
+- ✅ Analyze Algorithmic Complexity (O(n), O(log n))
 
 ## 5. Common Patterns
 
