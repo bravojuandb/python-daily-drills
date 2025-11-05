@@ -58,6 +58,16 @@ data = """id,name,email,country,status,spend
 19,Sam,sam@example.com,Spain,active,340.90
 20,Tina,tina@example.com,Germany,active,410.00"""
 
+from typing import Optional
+
+COUNTRY_MAP = {"Spain": "ES", "Germany": "DE", "France": "FR", "Italy": "IT"}
+
+def _spend_tier(spend: float) -> str:
+   if spend >= 300:
+       return "gold"
+   if spend >= 150:
+       return "sliver"
+   return "bronze"
 
 
 
@@ -71,3 +81,13 @@ def converter(data= str) -> list[dict[str,str]]:
     keys = header.split(",")
     return [dict(zip(keys, row.split(","))) for row in rows]
 
+
+records = converter(data)
+
+for row in records:
+    try:
+        spend_value = float(row["spend"])
+        tier = _spend_tier(spend_value)
+        print(f"{row['name']}, spend={spend_value}, tier={tier}")
+    except ValueError:
+        print(f"malformed row: {row}")
