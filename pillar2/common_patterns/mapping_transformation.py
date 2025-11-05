@@ -1,15 +1,9 @@
 """
-Mapping & Transformation (adapted to your dataset)
+Problem — Mapping & Transformation (adapted to your dataset)
 
 You’re given a **multi-line string** with a CSV header and rows:
 
-check: pillar2/common_patterns/customers.csv
-
-id,name,email,country,status,spend
-1,Anna,anna@example.com,Spain,active,120.50
-2,Bob,bob@example.com,Germany,inactive,80.00
-3, ........
-......
+See below.
 
 Task (same-size mapping, new meaning):
 1) Parse the text (skip the header) into a **list of dicts** with proper types:
@@ -39,5 +33,41 @@ Bonus (still mapping, not reducing):
 - Implement the transformation using a **single list comprehension** (you may prepare helper dicts/functions above it).
 - Keep the **original order** of rows.
 
-Be quick and precise — aim for 8–10 minutes.
+⏱ Be quick and precise — aim for 8–10 minutes.
 """
+
+data = """id,name,email,country,status,spend
+1,Anna,anna@example.com,Spain,active,120.50
+2,Bob,bob@example.com,Germany,inactive,80.00
+3,Cara,cara@example.com,Spain,active,300.00
+4,Dan,dan@example.com,Italy,active,50.00
+5,Eve,eve@example.com,Spain,inactive,0
+6,Frank,frank@example.com,France,active,210.75
+7,Gina,gina@example.com,Germany,active,95.60
+8,Hugo,hugo@example.com,Spain,active,150.00
+9,Iris,iris@example.com,Italy,inactive,40.20
+10,Jack,jack@example.com,France,active,500.00
+11,Kate,kate@example.com,Germany,inactive,0
+12,Liam,liam@example.com,Spain,active,275.30
+13,Mona,mona@example.com,France,active,125.00
+14,Nico,nico@example.com,Italy,inactive,15.00
+15,Olga,olga@example.com,Germany,active,230.00
+16,Paul,paul@example.com,Spain,active,60.00
+17,Quinn,quinn@example.com,Italy,active,110.10
+18,Rita,rita@example.com,France,inactive,20.00
+19,Sam,sam@example.com,Spain,active,340.90
+20,Tina,tina@example.com,Germany,active,410.00"""
+
+
+def converter(data= str) -> list[dict[str,str]]:
+    """
+    Convert a string of lines organized in a csv shape,
+    cpntainig a header-like first line.
+
+    Return a list of dictionaries organized as row header: row value
+    """
+    lines = data.splitlines()
+    header, *rows = lines
+    keys = header.split(",")
+    return [dict(zip(keys, row.split(","))) for row in rows]
+
