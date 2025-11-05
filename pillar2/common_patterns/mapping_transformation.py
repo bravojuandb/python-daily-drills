@@ -59,14 +59,14 @@ data = """id,name,email,country,status,spend
 20,Tina,tina@example.com,Germany,active,410.00"""
 
 
+
+
 def converter(data= str) -> list[dict[str,str]]:
     """
-    Convert a string of lines organized in a csv shape,
-    cpntainig a header-like first line.
-
-    Return a list of dictionaries organized as row header: row value
+    Convert a CSV-shaped multiline string (first line is the header)
+    into a list of dictionaries every value is still a string
     """
-    lines = data.splitlines()
+    lines = data.strip().splitlines()
     header, *rows = lines
     keys = header.split(",")
     return [dict(zip(keys, row.split(","))) for row in rows]
