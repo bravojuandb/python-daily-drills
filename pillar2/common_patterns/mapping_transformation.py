@@ -82,12 +82,39 @@ def converter(data= str) -> list[dict[str,str]]:
     return [dict(zip(keys, row.split(","))) for row in rows]
 
 
+def transform(records: list[dict[str, str]]) -> list[dict]:
+    """
+    Map stringly records -> typed + derived fields.
+    Skips malformed rows safely.
+    """
+    return [
+        {
+            "id": int(r["id"]),
+            "name": r["name"],
+            "email": r["email"],
+            "country": r["country"],
+            "status": r["status"],
+            "spend": float(r["spend"]),
+            "is_active": r["status"] == "active",
+            "email_domain": r["email"].split("@")[-1],
+            "country_code": COUNTRY_MAP.get(r["country"], "??"),
+            "spend_tier": _spend_tier(float(r["spend"])),
+        }
+        for r in records
+        if (
+            r.get("id") is not None
+            and r.get("name") is not None
+            and r.get("email") is not None
+            and r.get("country") is not None
+            and r.get("status") is not None
+            and r.get("spend") is not None
+            and (lambda _id, _sp: _id.isdigit() 
+                 and _sp.replace(".", "", 1).isdigit())(r["id"], r["spend"])
+        )
+    ]
+
+
 records = converter(data)
 
-for row in records:
-    try:
-        spend_value = float(row["spend"])
-        tier = _spend_tier(spend_value)
-        print(f"{row['name']}, spend={spend_value}, tier={tier}")
-    except ValueError:
-        print(f"malformed row: {row}")
+for i in transform(records):
+    print(i)
