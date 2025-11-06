@@ -110,8 +110,13 @@ def transform(records: list[dict[str, str]]) -> list[dict]:
         )
     ]
 
+if __name__ == "__main__":
+    # 1) parse raw CSV-shaped string into list[dict[str,str]]
+    rows = converter(data)
+    # 2) map to typed records with derived fields
+    enriched = transform(rows)
 
-records = converter(data)
-
-for i in transform(records):
-    print(i)
+    # 3) print per the spec:
+    for r in enriched:
+        print(f'{r["id"]} | {r["name"]} [{r["country_code"]}] — €{r["spend"]:.2f} — '
+              f'{r["email_domain"]} — active={r["is_active"]} — tier={r["spend_tier"]}')
