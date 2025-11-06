@@ -66,12 +66,10 @@ def _spend_tier(spend: float) -> str:
    if spend >= 300:
        return "gold"
    if spend >= 150:
-       return "sliver"
+       return "silver"
    return "bronze"
 
-
-
-def converter(data= str) -> list[dict[str,str]]:
+def converter(data: str) -> list[dict[str,str]]:
     """
     Convert a CSV-shaped multiline string (first line is the header)
     into a list of dictionaries every value is still a string
@@ -80,7 +78,6 @@ def converter(data= str) -> list[dict[str,str]]:
     header, *rows = lines
     keys = header.split(",")
     return [dict(zip(keys, row.split(","))) for row in rows]
-
 
 def transform(records: list[dict[str, str]]) -> list[dict]:
     """
