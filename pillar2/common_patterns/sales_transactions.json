@@ -1,0 +1,12 @@
+[
+    {"id": 1, "customer": "Anna", "country": "Spain", "amount": 120.50, "status": "paid"},
+    {"id": 2, "customer": "Bob", "country": "Germany", "amount": 80.00, "status": "refunded"},
+    {"id": 3, "customer": "Cara", "country": "Spain", "amount": 300.00, "status": "paid"},
+    {"id": 4, "customer": "Dan", "country": "Italy", "amount": 50.00, "status": "paid"},
+    {"id": 5, "customer": "Eve", "country": "France", "amount": 0.00, "status": "pending"},
+    {"id": 6, "customer": "Frank", "country": "France", "amount": 210.75, "status": "paid"},
+    {"id": 7, "customer": "Gina", "country": "Germany", "amount": 95.60, "status": "paid"},
+    {"id": 8, "customer": "Hugo", "country": "Spain", "amount": 150.00, "status": "paid"},
+    {"id": 9, "customer": "Iris", "country": "Italy", "amount": 40.20, "status": "refunded"},
+    {"id": 10, "customer": "Jack", "country": "France", "amount": 500.00, "status": "paid"}
+]
