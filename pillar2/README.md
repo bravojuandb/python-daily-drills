@@ -74,10 +74,10 @@
 
 Each pattern concludes with a **15-minute drill** — a concise, practical exercise to reinforce the concept.
 
-- **Iteration & Filtering** → selective traversal  
+- ✅ **Iteration & Filtering** → selective traversal  
   *Drill:* read a CSV and filter only rows where "status" == "active".
 
-- **Mapping & Transformation** → same size, new meaning  
+- ✅ **Mapping & Transformation** → same size, new meaning  
   *Drill:* convert a list of strings into dicts with derived fields (e.g. split "name,age" → {"name": ..., "age": ...}).
 
 - **Aggregation** → reduction  
