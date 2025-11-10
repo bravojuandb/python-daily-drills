@@ -50,29 +50,47 @@ def read_file(file_path: Path) -> list[dict[str, str]]:
 
 def aggregate_records(records: list[dict[str, str]]):
     
-    rows = [
+    paid = [
         row for row in records if 
         row["status"] == "paid" and 
         float(row["amount"]) > 0
         ]
-    paid_amounts = [row["amount"] for row in records]
+    paid_amounts = [row["amount"] for row in paid]
     
     total = sum(paid_amounts)
 
-    mean = total / len(paid_amounts if paid_amounts else 0)
+    mean = total / len(paid_amounts) if paid_amounts else 0
 
-    print(f"""
-        Paid transactions: {len(paid_amounts)}\n 
-        Total revenue: {round(total, 2)}\n
-        Average ticket: {round(mean, 2)}\n """
+    print(
+        f"Paid transactions: {len(paid_amounts)}\n"
+        f"Total revenue: €{round(total, 2)}\n"
+        f"Average ticket: €{round(mean, 2)}\n"
     )
+
+def aggregate_per_country(records: list[dict[str, str]], country: str):
+    
+    paid = [
+        row for row in records if 
+        row["status"] == "paid" and 
+        float(row["amount"]) > 0 and
+        row["country"] == country
+        ]
+    paid_amounts = [r["amount"] for r in paid]
+    total = round(sum(paid_amounts), 2)
+    return total
+
 
 
 BASE_PATH = Path(__file__).parent
 FILE_PATH = BASE_PATH / "sales_transactions.json"
 
+countries = ["Spain", "Italy", "Germany", "France"]
+
 
 if __name__ == "__main__":
     file = read_file(FILE_PATH)
-    aggr = aggregate_records(file)
-    print(aggr)
+    summary = aggregate_records(file)
+
+    for country in countries:
+        print(f"Country: {country}")
+        print("€", aggregate_per_country(file, country))
