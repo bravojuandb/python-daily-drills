@@ -48,7 +48,24 @@ def read_file(file_path: Path) -> list[dict[str, str]]:
     with open(file_path, encoding="UTF-8") as f:
         return json.load(f)
 
+def aggregate_records(records: list[dict[str, str]]):
+    
+    rows = [
+        row for row in records if 
+        row["status"] == "paid" and 
+        float(row["amount"]) > 0
+        ]
+    paid_amounts = [row["amount"] for row in records]
+    
+    total = sum(paid_amounts)
 
+    mean = total / len(paid_amounts if paid_amounts else 0)
+
+    print(f"""
+        Paid transactions: {len(paid_amounts)}\n 
+        Total revenue: {round(total, 2)}\n
+        Average ticket: {round(mean, 2)}\n """
+    )
 
 
 BASE_PATH = Path(__file__).parent
@@ -57,5 +74,5 @@ FILE_PATH = BASE_PATH / "sales_transactions.json"
 
 if __name__ == "__main__":
     file = read_file(FILE_PATH)
-
-    print(len(file))
+    aggr = aggregate_records(file)
+    print(aggr)
