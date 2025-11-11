@@ -53,8 +53,26 @@ import json
 def read_json(path: Path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
-    
 
+
+def accumulator(recs: list[dict]):
+    """
+    Accumulates amounts per customer without aggregating them.
+
+    Arguments:
+    List of dictionaries containing records of sales transactions
+
+    Returns:
+    Dictionary with customer as key, and a list of amounts as values
+    """
+    groups = {}
+    for r in recs:
+        customer = r["customer"]
+        amount = r["amount"]
+        if customer not in groups:
+            groups[customer] = []
+        groups[customer].append(amount)
+    return groups
 
 
 
@@ -62,5 +80,18 @@ if __name__ == "__main__":
     FILE_PATH = Path(__file__).parent / "sales_transactions.json"
     file = read_json(FILE_PATH)
 
-    for rec in file:
-        print(rec)
+    print(accumulator(file))
+
+    for key, val in accumulator(file).items():
+        print(key, val)
+
+"""
+totals = {}
+
+for r in records:
+    customer = r["customer"]
+    amount = r["amount"]
+    totals[customer] = totals.get(customer, 0) + amount
+
+print(totals)
+"""
