@@ -75,23 +75,26 @@ def accumulator(recs: list[dict]):
     return groups
 
 
+def aggregator(recs: list[dict]):
+    """
+    Accumulates and aggregates amounts per customer in one pass
+    """
+    totals = {}
+    for r in recs:
+        customer = r["customer"]
+        amount = r["amount"]
+        totals[customer] = totals.get(customer, 0) + amount
+    return totals
+
+
+
 
 if __name__ == "__main__":
     FILE_PATH = Path(__file__).parent / "sales_transactions.json"
     file = read_json(FILE_PATH)
 
-    print(accumulator(file))
+    print(aggregator(file))
 
     for key, val in accumulator(file).items():
         print(key, val)
 
-"""
-totals = {}
-
-for r in records:
-    customer = r["customer"]
-    amount = r["amount"]
-    totals[customer] = totals.get(customer, 0) + amount
-
-print(totals)
-"""
