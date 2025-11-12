@@ -1,19 +1,18 @@
 """
-Turing-style problem — Grouping (partition + aggregate)
+Problem — Grouping (partition + aggregate)
 
-You’re given a dataset of sales transactions, where each record represents one purchase event:
+You’re given a dataset of sales transactions, where each record represents one purchase event, like this:
 
 [
-    {"id": 1, "customer": "Anna", "country": "Spain", "amount": 120.50, "status": "paid"},
-    {"id": 2, "customer": "Bob", "country": "Germany", "amount": 80.00, "status": "refunded"},
-    {"id": 3, "customer": "Cara", "country": "Spain", "amount": 300.00, "status": "paid"},
-    {"id": 4, "customer": "Dan", "country": "Italy", "amount": 50.00, "status": "paid"},
-    {"id": 5, "customer": "Eve", "country": "France", "amount": 0.00, "status": "pending"},
-    {"id": 6, "customer": "Frank", "country": "France", "amount": 210.75, "status": "paid"},
-    {"id": 7, "customer": "Gina", "country": "Germany", "amount": 95.60, "status": "paid"},
-    {"id": 8, "customer": "Hugo", "country": "Spain", "amount": 150.00, "status": "paid"},
-    {"id": 9, "customer": "Iris", "country": "Italy", "amount": 40.20, "status": "refunded"},
-    {"id": 10, "customer": "Jack", "country": "France", "amount": 500.00, "status": "paid"}
+    {"id": 1, "customer": "Anna", "country": "Spain", "amount": 85.00, "status": "paid"},
+    {"id": 2, "customer": "Dan", "country": "Italy", "amount": 120.40, "status": "paid"},
+    {"id": 3, "customer": "Bob", "country": "Germany", "amount": 200.00, "status": "paid"},
+    {"id": 4, "customer": "Iris", "country": "Italy", "amount": 40.20, "status": "refunded"},
+    {"id": 5, "customer": "Frank", "country": "France", "amount": 150.00, "status": "refunded"},
+    {"id": 6, "customer": "Hugo", "country": "Spain", "amount": 130.00, "status": "refunded"},
+    {"id": 7, "customer": "Cara", "country": "Spain", "amount": 175.25, "status": "paid"},
+    {"id": 8, "customer": "Eve", "country": "France", "amount": 320.75, "status": "paid"},
+    {"id": 9, "customer": "Jack", "country": "France", "amount": 500.00, "status": "paid"}
 ]
 
 Task:
@@ -54,6 +53,7 @@ def read_json(path: Path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
+# Explicit, didactic approach, partition without aggregation
 
 def accumulator(recs: list[dict]):
     """
@@ -74,8 +74,9 @@ def accumulator(recs: list[dict]):
         groups[customer].append(amount)
     return groups
 
+# Didactic approach, partition and aggregation in one pass, no external libraries
 
-def aggregator(recs: list[dict]):
+def reducer(recs: list[dict]):
     """
     Accumulates and aggregates amounts per customer in one pass
     """
@@ -88,13 +89,57 @@ def aggregator(recs: list[dict]):
 
 
 
+# Pythonic approach: partition and aggregation in one pass using defaultdict
+
+# Trick: defaultdict --- "Whenever a key is accessed cal this ( function )..."
+
+def group_by_customer(transactions: list[dict]) -> dict:
+    """
+    Group by 'customer' and sum all paid transaction amounts.
+    """
+    from collections import defaultdict
+
+    totals = defaultdict(float)
+
+    for tx in transactions:
+        status = tx["status"]
+        amount = tx["amount"]
+        customer = tx["customer"]
+
+        if status == 'paid' and amount > 0:
+            totals[customer] += amount
+
+    return dict(totals)
+
+# Bonus: 
+
+def group_by_customer_with_counts(transactions: list[dict]) -> dict[str, dict]:
+    """
+    Group by 'customer' and compute both total and average.
+    """
+    from collections import defaultdict
+
+    grouped = defaultdict(lambda: {"total": 0.0, "count": 0})
+
+    for tx in transactions:
+        if tx["status"] == "paid" and tx["amount"] > 0:
+            cust = tx["customer"]
+            grouped[cust]["total"] += tx["amount"]
+            grouped[cust]["count"] += 1
+
+    # compute averages
+    for cust, data in grouped.items():
+        total, count = data["total"], data["count"]
+        data["avg"] = round(total / count, 2) if count else 0
+
+    return dict(grouped)
+
 
 if __name__ == "__main__":
     FILE_PATH = Path(__file__).parent / "sales_transactions.json"
     file = read_json(FILE_PATH)
 
-    print(aggregator(file))
+data= group_by_customer_with_counts(file)
 
-    for key, val in accumulator(file).items():
-        print(key, val)
-
+for k, v in data.items():
+    print(k, v)
