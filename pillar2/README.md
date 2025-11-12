@@ -74,17 +74,17 @@
 
 Each pattern concludes with a **15-minute drill** — a concise, practical exercise to reinforce the concept.
 
-- ✅ **Iteration & Filtering** → selective traversal  
-  *Drill:* read a CSV and filter only rows where "status" == "active".
+- **Iteration & Filtering** → selective traversal  
+  ✅ *Drill:* read a CSV and filter only rows where "status" == "active".
 
-- ✅ **Mapping & Transformation** → same size, new meaning  
-  *Drill:* convert a list of strings into dicts with derived fields (e.g. split "name,age" → {"name": ..., "age": ...}).
+- **Mapping & Transformation** → same size, new meaning  
+  ✅ *Drill:* convert a list of strings into dicts with derived fields (e.g. split "name,age" → {"name": ..., "age": ...}).
 
 - **Aggregation** → reduction  
-  *Drill:* sum or average numerical values from a JSON list.
+  ✅ *Drill:* sum or average numerical values from a JSON list.
 
 - **Grouping** → partition + aggregate  
-  *Drill:* group transactions by customer and compute total amount.
+  ✅ *Drill:* group transactions by customer and compute total amount.
 
 - **Searching** → efficient lookup  
   *Drill:* implement linear and binary search on a sorted list of IDs.
