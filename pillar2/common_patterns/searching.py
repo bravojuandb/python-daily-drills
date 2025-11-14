@@ -33,6 +33,8 @@ Reminder:
 
 """
 
+import time
+
 def linear_search(nums: list[int], target: int) -> int:
     """
     Scan a list of integers from left to right
@@ -46,10 +48,8 @@ def linear_search(nums: list[int], target: int) -> int:
     
     for i, num in enumerate(nums):
         if num == target:
-            print(f"found at index: {i}")
             return i
         
-    print("target not found")
     return -1
 
 
@@ -63,18 +63,31 @@ def binary_search(nums: list[int], target: int) -> int:
         mid_value = nums[mid]
 
         if mid_value == target:
-            print("Found the target")
             return mid
         elif mid_value < target:
             left = mid + 1
         else:
             right = mid - 1
-    
-    print("target not found")
     return -1
 
 
+nums = [x + x + 1 for x in range(10_000)]
+N = 10_000
+target = 9999
 
-ids = [3, 7, 9, 12, 18, 21, 25, 30, 44, 57, 60]
 
-print(binary_search(ids, 18))
+# Binary search benchmark
+start = time.perf_counter()
+for _ in range(N):
+    binary_search(nums, target) # O(log n) complexity per search
+binary_time = time.perf_counter() - start
+
+# Linear search benchmark
+start = time.perf_counter()
+for _ in range(N):
+    linear_search(nums, target) # O(n) complexity per search
+linear_time = time.perf_counter() - start
+
+print(f"Binary search time: {binary_time:.5f} seconds")
+print(f"Linear search time: {linear_time:.5f} seconds")
+print(f"Speed ratio: linear / binary = {linear_time / binary_time:.2f}x slower")
