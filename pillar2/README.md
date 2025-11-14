@@ -72,8 +72,6 @@
 
 ## 5. Common Patterns
 
-Each pattern concludes with a **15-minute drill** — a concise, practical exercise to reinforce the concept.
-
 - **Iteration & Filtering** → selective traversal  
   ✅ *Drill:* read a CSV and filter only rows where "status" == "active".
 
@@ -87,7 +85,7 @@ Each pattern concludes with a **15-minute drill** — a concise, practical exerc
   ✅ *Drill:* group transactions by customer and compute total amount.
 
 - **Searching** → efficient lookup  
-  *Drill:* implement linear and binary search on a sorted list of IDs.
+  ✅ *Drill:* implement linear and binary search on a sorted list of IDs.
 
 - **Recursion** → self-similar decomposition  
   *Drill:* recursively count files in nested folders.
