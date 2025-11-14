@@ -54,7 +54,27 @@ def linear_search(nums: list[int], target: int) -> int:
 
 
 
+def binary_search(nums: list[int], target: int) -> int:
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        mid_value = nums[mid]
+
+        if mid_value == target:
+            print("Found the target")
+            return mid
+        elif mid_value < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    print("target not found")
+    return -1
+
+
 
 ids = [3, 7, 9, 12, 18, 21, 25, 30, 44, 57, 60]
 
-print(linear_search(ids, 21))
+print(binary_search(ids, 18))
