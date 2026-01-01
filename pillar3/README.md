@@ -9,6 +9,17 @@
 -   Save as Parquet → `pandas.to_parquet()`
 -   Handle Compressed Files → `gzip`, `.zipfile`
 
+    ## 1.1 Tabular Data Cleaning (pandas drills)
+
+    -   Read CSV as strings on purpose
+    -   Standardize missing values
+    -   Trim whitespace on string columns
+    -   Clean code-like columns
+    -   Remove trailing `.0` artifacts from codes
+    -   Enforce data types (years → nullable integers)
+    -   Preserve identifiers as strings (never numeric)
+    -   Remove exact duplicate rows only
+
 ---
 
 ## 2. Configs & CLI Tools
