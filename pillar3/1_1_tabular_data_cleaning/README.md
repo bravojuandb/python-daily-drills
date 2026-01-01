@@ -1,12 +1,9 @@
-# Pandas Cleaning Drills (Junior Level)
+# Tabular Data Cleaning
 
 I'm training to implement a real-world but minimum data cleaning contract.
 
 I'm using a real dataset in csv format: navarra_stablishments_registry.csv
 
----
-
-## Drill List
 
 ### Drill 01 — Read CSV as strings on purpose
 **Goal:** Preserve identifiers and avoid numeric surprises.  
