@@ -24,3 +24,5 @@ Desktop.ini
 efficiency_checker.py
 notes.md
 sample.txt
+
+.venv/
