@@ -66,5 +66,3 @@ if __name__ == "__main__":
     assert_fix_cnae_cols(df, "cnae09_local")
 
     print("passed: trailing '.0' removed from cnae columns.")
-
-    print(df.head())
