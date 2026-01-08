@@ -39,6 +39,9 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
             "-": pd.NA,
             "- -": pd.NA,
             "99": pd.NA,
+        },
+        "codpost": {
+            "0": pd.NA
         }
     }
 
@@ -65,4 +68,5 @@ if __name__ == "__main__":
     df = handle_missing_values(df)
     assert_no_placeholders(df, "restot", [".", ". .", "--", "-", "- -", "99"])
     assert_no_placeholders(df, "portalt", ["0", "0.0"])
+    assert_no_placeholders(df, "codpost", ["0"])
     print("passed: placeholder tokens replaced with pd.NA ")
