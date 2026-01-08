@@ -1,9 +1,28 @@
 # Tabular Data Cleaning
 
-I'm training to implement a real-world but minimum data cleaning contract.
+This folder implements a **minimal but real-world tabular data cleaning contract**.
 
-I'm using a real dataset in csv format: navarra_stablishments_registry.csv
+It uses a trimmed subset of a real CSV registry of economic establishments in Navarra, Spain:
 
+- `data/navarra_trimmed.csv`
+
+Each drill corresponds to a Python script that can be executed as a **module**.  
+Later drills build on earlier ones. For example, running the script for **Drill 03 (handle_nulls)** will internally reuse logic from **Drill 01 (read_csv)** and **Drill 02 (normalize_csv)**.
+
+## How to run
+
+Activate the virtual environment and move to `pillar3/`:
+
+```bash
+source ../venv/bin/activate
+cd pillar3
+```
+
+Run any script as a module:
+
+```bash
+python -m tabular_data_cleaning.normalize_csv
+```
 
 ### Drill 01 — Read CSV as strings on purpose
 **Goal:** Preserve identifiers and avoid numeric surprises.  
