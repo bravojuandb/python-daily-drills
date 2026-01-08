@@ -52,6 +52,17 @@ python -m tabular_data_cleaning.normalize_csv
 
 ---
 
+### Drill 04.1 — Normalize address portal numbers
+
+**Goal:** Enforce domain rules for address portal numbers without affecting free-text values.
+
+- Apply the rule: portal numbers must be integers (no decimals)
+- Remove trailing `.0` from numeric portal values (e.g. `"6.0"` → `"6"`)
+- Do **not** modify non-numeric tokens (`"PBJ"`, `"BAJO"`, `"ENT"`, etc.)
+- Preserve original meaning of address components
+
+---
+
 ### Drill 05 — Enforce year as nullable integer
 **Goal:** Apply correct numeric typing without data loss.  
 - Convert year columns using `pd.to_numeric(errors="coerce")`
@@ -64,6 +75,7 @@ python -m tabular_data_cleaning.normalize_csv
 - Ensure columns like `dnici`, `codpost`, `cod_cmun` remain `string`
 - Never cast identifiers to numeric
 - Apply zero-padding only if explicitly required
+- Validate identifiers (e.g. `codpost` must be exactly five digits)
 
 ---
 
