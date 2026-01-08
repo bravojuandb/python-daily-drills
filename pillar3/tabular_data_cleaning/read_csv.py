@@ -21,12 +21,15 @@ DATA_PATH = BASE_DIR / "data" / "navarra_trimmed.csv"
 
 assert DATA_PATH.exists(), "CSV file does not exist at expected path"
 
-# Read everything as a string on purpose to preserve data integrity
-navarra_df = pd.read_csv(
-    DATA_PATH,
-    dtype="string",
-    keep_default_na=False  # Don't let pandas convert strings to nulls
-)
+def read_registry(path: Path | None = None) -> pd.DataFrame:
+    if path is None:
+        path = DATA_PATH
+    df = pd.read_csv(
+        path,
+        dtype="string",
+        keep_default_na=False  # Don't let pandas convert strings to nulls
+    )
+    return df
 
 def assert_all_columns_are_string(df: pd.DataFrame) -> None:
     """
@@ -54,12 +57,14 @@ def assert_identifiers_preserved(df: pd.DataFrame, column: str) -> None:
         f"Null values detected in identifier column '{column}'"
     )
 
-print(navarra_df.head())
-print(navarra_df.dtypes)
+if __name__ == "__main__":
+    navarra_df = read_registry()
+    print(navarra_df.head())
+    print(navarra_df.dtypes)
 
-# Assertions — Drill 01 guarantees
-assert_all_columns_are_string(navarra_df)
-assert_no_nulls_present(navarra_df)
-assert_identifiers_preserved(navarra_df, "codpost")
+    # Assertions — Drill 01 guarantees
+    assert_all_columns_are_string(navarra_df)
+    assert_no_nulls_present(navarra_df)
+    assert_identifiers_preserved(navarra_df, "codpost")
 
-print("passed: all columns are string, no nulls, identifiers preserved.")
+    print("passed: all columns are string, no nulls, identifiers preserved.")
