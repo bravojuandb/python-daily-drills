@@ -11,16 +11,7 @@ Normalize trivial missing values without changing meaning.
 
 from pathlib import Path
 import pandas as pd
-
-
-def read_registry(file: Path) -> pd.DataFrame:
-
-    df = pd.read_csv(
-        file, 
-        dtype="string", 
-        keep_default_na=False
-    ) 
-    return df
+from .read_csv import read_registry
 
 
 def normalize_registry(df: pd.DataFrame) -> pd.DataFrame:
@@ -48,10 +39,12 @@ def assert_no_empty_strings(df: pd.DataFrame) -> None:
 BASE_DIR = Path(__file__).resolve().parent
 FILE_PATH = BASE_DIR / "data" / "navarra_trimmed.csv"
 
-df = read_registry(FILE_PATH)
-df = normalize_registry(df)
 
-assert_no_leading_trailing_whitespace(df)
-assert_no_empty_strings(df)
+if __name__ == "__main__":
+    df = read_registry(FILE_PATH)
+    df = normalize_registry(df)
 
-print("passed: no leading/trailing whitespaces, and no empty strings.")
+    assert_no_leading_trailing_whitespace(df)
+    assert_no_empty_strings(df)
+
+    print("passed: no leading/trailing whitespaces, and no empty strings.")
