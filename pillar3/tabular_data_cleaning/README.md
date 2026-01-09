@@ -77,24 +77,17 @@ python -m tabular_data_cleaning.normalize_csv
 
 ---
 
-### Drill 07 — Minimal cleaning of free-text fields
+### Drill 07 — [Minimal cleaning of free-text fields](handle_free_text_fields.py)
 **Goal:** Avoid corrupting descriptive data.  
 - Apply `.str.strip()` only
 - No casing changes, no replacements, no normalization
 
 ---
 
-### Drill 08 — Remove exact duplicate rows
+### Drill 08 — [Remove exact duplicate rows](remove_duplicate_rows.py)
 **Goal:** Deduplicate safely.  
 - Use `df.drop_duplicates()`
 - No fuzzy matching, no subset logic
 - Log before/after row counts
 
 ---
-
-## Completion Criteria
-
-These drills are considered complete when:
-- You can write them without looking up documentation
-- Each script is fully understood line by line
-- The process feels mechanical and boring
