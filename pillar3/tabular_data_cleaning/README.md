@@ -24,38 +24,36 @@ Run any script as a module:
 python -m tabular_data_cleaning.normalize_csv
 ```
 
-### Drill 01 — Read CSV as strings on purpose
+### Drill 01 — [Read CSV as strings on purpose](read_csv.py)
 **Goal:** Preserve identifiers and avoid numeric surprises.  
 - Use `pd.read_csv(..., dtype="string", keep_default_na=False)`
 - Verify leading zeros are preserved
 
 ---
 
-### Drill 02 — Trim whitespace and standardize empty strings
+### Drill 02 — [Trim whitespace and standardize empty strings](normalize_csv.py)
 **Goal:** Normalize trivial missing values.  
 - Apply `.str.strip()` to selected string columns  
 - Replace empty strings `""` with `pd.NA`
 
 ---
 
-### Drill 03 — Replace placeholder values with nulls
+### Drill 03 — [Replace placeholder values with nulls](handle_nulls.py)
 **Goal:** Make missing data explicit.  
 - Replace placeholders like `"."`, `"--"`, `"0"` with `pd.NA`
 - Apply replacements **only where semantically correct**
 
 ---
 
-### Drill 04 — Remove trailing `.0` from code-like columns
+### Drill 04 — [Remove trailing .0 from code-like columns](fix_cnae_cols.py)
 **Goal:** Fix formatting artifacts from numeric parsing.  
 - Clean values like `"6910.0"` → `"6910"`
 - Use regex replacement anchored at end of string
 
 ---
 
-### Drill 04.1 — Normalize address portal numbers
-
+### Drill 04.1 — [Normalize address portal numbers](fix_portalt_col.py)
 **Goal:** Enforce domain rules for address portal numbers without affecting free-text values.
-
 - Apply the rule: portal numbers must be integers (no decimals)
 - Remove trailing `.0` from numeric portal values (e.g. `"6.0"` → `"6"`)
 - Do **not** modify non-numeric tokens (`"PBJ"`, `"BAJO"`, `"ENT"`, etc.)
@@ -63,14 +61,14 @@ python -m tabular_data_cleaning.normalize_csv
 
 ---
 
-### Drill 05 — Enforce year as nullable integer
+### Drill 05 — [Enforce year as nullable integer](cast_year_to_int.py)
 **Goal:** Apply correct numeric typing without data loss.  
 - Convert year columns using `pd.to_numeric(errors="coerce")`
 - Cast to pandas nullable integer type `Int64`
 
 ---
 
-### Drill 06 — Preserve identifiers as strings
+### Drill 06 — [Preserve identifiers as strings](preserve_codes_as_strings.py)
 **Goal:** Protect codes and identifiers.  
 - Ensure columns like `dnici`, `codpost`, `cod_cmun` remain `string`
 - Never cast identifiers to numeric
