@@ -96,3 +96,16 @@
 -   Store logs of last run
 -   Document schedule and run command
 
+    ## 8.1 Bash & Orchestration
+
+    - Bash execution & Arguments
+    - Variables & Quoting
+    - While loops & termination
+    - Bash string manipulation
+    - Deterministic path building
+    - Idempotency with files
+    - External commands & failure
+    - Temporary directories
+    - Orchestration with Python
+    - Articulation
+
