@@ -20,6 +20,12 @@
     -   Preserve identifiers as strings (never numeric)
     -   Remove exact duplicate rows only
 
+    ## 1.2 APIs, HTTP, File I/O
+
+    -  URL builder
+    -  HTTP fetch wrapper
+    -  Raw JSON writer
+
 ---
 
 ## 2. Configs & CLI Tools
