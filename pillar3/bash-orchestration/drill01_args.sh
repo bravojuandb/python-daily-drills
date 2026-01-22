@@ -1,14 +1,20 @@
-"""
-Bash execution & arguments
+#!/usr/bin/env bash
 
-Goal
-Understand how a Bash script receives input.
+# Bash execution & arguments
+#
+# Goal
+# Understand how a Bash script receives input.
+#
+# Tasks
+# - Print the script name and the values of $1 and $2
+# - Run it with two arguments: 2002-01 2002-03
+#
+# Outcome
+# - You can explain how FROM and TO are populated
+# - You know how arguments reach a script
 
-Tasks
-- Print the script name and the values of `$1` and `$2`
-- Run it with two arguments: `2002-01 2002-03`
+echo "Script name: $0"
+echo "FROM: $1"
+echo "TO: $2"
 
-Outcome
-- You can explain how `FROM` and `TO` are populated
-- You know how arguments reach a script
-"
+# Run: ./drill01_args.sh 2002-01 2002-03
