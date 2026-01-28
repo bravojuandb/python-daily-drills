@@ -149,19 +149,3 @@ Use Python as a controller, not a worker.
 - You understand orchestration vs logic
 
 ---
-
-## Drill 10 — Pipeline explanation (meta-drill)
-
-**Goal**  
-Articulate the system clearly.
-
-**Tasks**
-- Write a short paragraph answering:
-  - What is Bronze?
-  - What happens in download?
-  - What happens in extract?
-  - Why no transformation yet?
-
-**Outcome**
-- You can explain your pipeline confidently
-- You understand why each step exists
