@@ -16,7 +16,7 @@ After finishing `1_core`, you should be able to:
 - understand which operations mutate data and which return new objects
 - return results cleanly from functions before moving into control flow and abstraction
 
-## Drill Standards For A Strong Second Pass
+## Drill Standards
 
 Each drill in this chapter should ideally meet this bar:
 
@@ -27,8 +27,9 @@ Each drill in this chapter should ideally meet this bar:
 - the drill includes one light constraint, edge case, or mini-real-world framing
 - the file may include a demo block, but only under `if __name__ == "__main__":`
 
-## Drills
-- `01_interger_arithmetic.py`
+## Drill Summary
+
+- `01_integer_arithmetic.py`
   Practice the main arithmetic operators on two numbers and return the results in a clear order.
 
 - `02_float_precision.py`
