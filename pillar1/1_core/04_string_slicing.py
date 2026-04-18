@@ -30,3 +30,22 @@ Example:
 Thinking goal:
 The drill is simple on purpose, but it should make slicing feel automatic and precise.
 """
+
+def slice_code(token: str) -> dict[str, str]:
+
+    return {
+        "prefix": token[:4],
+        "suffix": token[-3:],
+        "middle": token[1:-1],
+        "every_second": token[::2],
+        "reversed": token[::-1],
+    }
+
+if __name__ == "__main__":
+    assert slice_code("DataEngineer") == {
+        "prefix": "Data",
+        "suffix": "eer",
+        "middle": "ataEnginee",
+        "every_second": "DtEgne",
+        "reversed": "reenignEataD",
+    }
