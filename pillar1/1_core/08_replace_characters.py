@@ -20,3 +20,9 @@ Examples:
 Thinking goal:
 This is a small transformation drill that tests precision and consistency.
 """
+def mask_vowels(text: str) -> str:
+    vowels = set("AEIOUaeiou")
+    return "".join("*" if char in vowels else char for char in text)
+
+if __name__ == "__main__":
+    print(mask_vowels("AEIOU 123"))
