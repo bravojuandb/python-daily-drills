@@ -17,3 +17,16 @@ Example:
 Thinking goal:
 This drill makes you distinguish mutation from non-mutation, which matters a lot later.
 """
+
+def compare_sorts(prices: list[int]) -> tuple[list[int],  list[int]]:
+
+    ascending = prices.copy()
+    ascending.sort()
+
+    descending = sorted(prices, reverse=True)
+
+    return ascending, descending
+
+if __name__ == "__main__":
+
+    print(compare_sorts([199, 49, 350, 120, 75]))    
