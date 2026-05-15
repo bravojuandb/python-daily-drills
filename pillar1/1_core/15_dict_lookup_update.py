@@ -23,3 +23,19 @@ Expected result:
 Thinking goal:
 This drill is about safe access and intentional mutation of dictionary state.
 """
+
+def update_inventory(inventory: dict[str, int]) -> dict[str, int]:
+
+    _banana = inventory["banana"]
+
+    pear = inventory.get("pear", 0)
+
+    inventory["pear"] = pear
+    inventory["apple"] += 7
+    inventory["orange"] = 12
+
+    return inventory
+
+
+if __name__ == "__main__":
+    print(update_inventory({"apple": 10, "banana": 5, "orange": 0}))
