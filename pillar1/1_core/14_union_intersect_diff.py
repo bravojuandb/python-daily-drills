@@ -18,3 +18,17 @@ Example:
 Thinking goal:
 This is about choosing the right data structure and using its strengths directly.
 """
+
+def compare_groups(
+        group_a: set[str], 
+        group_b: set[str]) -> tuple[set[str], set[str], set[str]]:
+
+    union = group_a.union(group_b)
+    intersect = group_a.intersection(group_b)
+    diff = group_a.difference(group_b)
+
+    return union, intersect, diff
+
+if __name__ == "__main__":
+    print(compare_groups({"Alice", "Bob"}, {"Bob", "Eve"}))
+ 
