@@ -22,3 +22,22 @@ Expected result:
 Thinking goal:
 The drill is about tracking list state over time, not just calling methods.
 """
+
+def process_queue() -> list[int]:
+    queue =  []
+
+    queue.append(101)
+    queue.append(102)
+    queue.append(103)
+    
+    queue.pop(0)
+
+    queue.append(104)
+    queue.append(105)
+
+    queue.pop()
+
+    return queue
+
+if __name__ == "__main__":
+    print(process_queue())
