@@ -16,3 +16,12 @@ Example:
 Thinking goal:
 This drill is about turning aligned inputs into a useful mapping with a concise, readable expression.
 """
+
+
+def build_inventory(products: list[str], quantities: list[int]) -> dict[str, int]:
+    if len(products) != len(quantities):
+        raise ValueError("Both lists must have the same length")
+    return {key : val for key, val in zip(products, quantities)}
+
+if __name__ == "__main__":
+    print(build_inventory(["apple", "banana", "orange"], [10, 5, 0]))
