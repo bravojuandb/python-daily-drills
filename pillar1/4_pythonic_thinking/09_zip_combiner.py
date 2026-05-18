@@ -1,0 +1,18 @@
+"""
+Drill 09 - Zip Combiner
+
+Write a function:
+    combine_scores(names: list[str], scores: list[int]) -> dict[str, int]
+
+Requirements:
+1. Use `zip()` to combine the lists.
+2. Convert the result into a dictionary.
+3. If the input lists have different lengths, raise `ValueError`.
+
+Example:
+>>> combine_scores(["Alice", "Bob", "Charlie"], [85, 92, 78])
+{'Alice': 85, 'Bob': 92, 'Charlie': 78}
+
+Thinking goal:
+This drill is about pairing aligned data cleanly while still guarding against silent mismatch.
+"""
