@@ -22,3 +22,23 @@ Example:
 Thinking goal:
 This drill is about ordering conditions carefully when one special case overlaps a broader range.
 """
+
+temperatures = [20, 21, 30, -2, 12, 22, 25]
+
+def classify_temperature(temp: int) -> str:
+    if temp < 0:
+        return "Freezing"
+    elif temp == 21:
+        return "Perfect"
+    elif temp >= 0 and temp <= 15:
+        return "Cold"
+    elif temp >= 16 and temp <= 25:
+        return "Mild"
+    
+    else:
+        return "Hot"
+
+
+if __name__ == "__main__":
+    for temperature in temperatures:
+        print(temperature, classify_temperature(temperature))
