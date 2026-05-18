@@ -24,3 +24,25 @@ Example:
 Thinking goal:
 This drill is about handling one decision inside another while keeping boundary cases straight.
 """
+
+def classify_number(n: int) -> str:
+    if n == 0:
+        return "Zero"
+    elif n > 0:
+        if n % 2 == 0:
+            return "Positive Even"
+        else:
+            return "Positive Odd"
+    else:
+        if abs(n) > 10:
+            return "Negative Large"
+        elif abs(n) == 10:
+            return "Negative Ten"
+        else:
+            return "Negative Small"
+
+
+if __name__ == "__main__":
+    numbers = [-12, 10, -10, 49, -49]
+    for num in numbers:
+        print(num, classify_number(num))
