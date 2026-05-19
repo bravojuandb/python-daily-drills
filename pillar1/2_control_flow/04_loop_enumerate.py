@@ -17,3 +17,14 @@ Example:
 Thinking goal:
 This drill is about separating an item's position from whether it passes a filter.
 """
+
+def label_long_fruits(fruits: list[str]) -> list[str]:
+    long_fruits = []
+    for pos, fruit in enumerate(fruits, start=1):
+        if len(fruit) >= 6:
+            long_fruits.append(f"{pos}: {fruit}")
+    return long_fruits
+
+
+if __name__ == "__main__":
+    print(label_long_fruits(["apple", "banana", "fig", "cherry"]))
