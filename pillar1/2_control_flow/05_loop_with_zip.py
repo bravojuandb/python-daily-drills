@@ -18,3 +18,15 @@ Example:
 Thinking goal:
 This drill is about combining aligned inputs while making a fresh decision for each pair.
 """
+
+def pair_students(students: list[str], grades: list[int]) -> list[str]:
+    passed = []
+    for key, val in zip(students, grades):
+        if val >= 60:
+            passed.append(f"{key}: {val} (pass)")
+        else:
+            passed.append(f"{key}: {val} (fail)")
+    return passed
+
+if __name__ == "__main__":
+    print(pair_students(["Alice", "Bob", "Rob"], [90, 75, 30]))
