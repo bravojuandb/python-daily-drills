@@ -5,16 +5,17 @@ Write a function:
     first_affordable(price_tags: list[int], budget: int) -> int
 
 Requirements:
-1. Loop through the prices in order.
-2. If a price is negative, skip it with `continue`.
-3. Find the first price that is less than or equal to `budget`.
-4. Use `break` for the early stop behavior.
-5. If no valid affordable price is found, return `-1`.
+1. Scan the prices from left to right.
+2. Negative values represent broken tags and should be ignored.
+3. Return the first usable price that does not exceed `budget`.
+4. Stop searching as soon as you know the answer.
+5. If no usable affordable price exists, return `-1`.
+6. Use both `continue` and `break`.
 
 Example:
 >>> first_affordable([-5, 120, 80, 150], 100)
 80
 
 Thinking goal:
-This drill is about tracing which values should be ignored, which should stop the search, and which should be skipped.
+This drill is about deciding which values should be ignored, which value should end the search, and how to encode that control flow directly.
 """

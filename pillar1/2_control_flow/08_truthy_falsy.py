@@ -6,9 +6,10 @@ Write a function:
 
 Requirements:
 1. Return `"missing"` if the value is `None`.
-2. Return `"empty"` if the value is falsy but not `None`.
-3. Return `"present"` if the value is truthy.
-4. Use Python truthiness directly.
+2. Return `"empty"` if the value is present but evaluates to `False`.
+3. Return `"present"` if the value evaluates to `True`.
+4. Do not compare the value to specific empty containers like `[]` or `""`.
+5. Use Python truthiness directly.
 
 Example:
 >>> describe_value([])

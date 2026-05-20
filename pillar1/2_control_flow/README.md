@@ -43,22 +43,22 @@ Each drill in this chapter should ideally meet this bar:
   Label items with 1-based positions while filtering by a rule.
 
 - `05_loop_with_zip.py`
-  Combine two aligned lists and classify each pair into a status bucket.
+  Combine aligned lists and derive a status string for each pair.
 
 - `06_break_continue_maze.py`
-  Skip blocked values, stop at the first valid match, and handle a fallback case.
+  Ignore broken values, stop at the first usable match, and handle a fallback case.
 
 - `07_ternary_operator.py`
-  Use nested ternary logic for a compact three-way classification.
+  Use nested ternary logic for a compact three-way label.
 
 - `08_truthy_falsy.py`
-  Decide truthiness while distinguishing empty containers from missing values.
+  Distinguish missing values from present-but-empty values with truthiness.
 
 - `09_tag_and_filter_scores.py`
-  Filter invalid values, classify the rest, and preserve the original order.
+  Filter invalid values, classify the rest, and preserve order without a comprehension.
 
 - `10_first_matching_task.py`
-  Skip blocked items, stop at the first full match, and return a fallback when needed.
+  Ignore blocked items, stop at the first real match, and return a fallback when needed.
 
 - `11_loop_summary_report.py`
-  Walk through a sequence once and build a small summary from multiple conditions.
+  Walk through a sequence once and build a category summary from multiple conditions.

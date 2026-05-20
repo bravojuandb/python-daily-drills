@@ -1,5 +1,5 @@
 """
-Challenge 02 - First Matching Task
+Drill 10 - First Matching Task
 
 Write a function:
     first_ready_task(tasks: list[dict[str, object]]) -> str
@@ -11,10 +11,11 @@ Each task dictionary has:
 
 Requirements:
 1. Loop through the tasks in order.
-2. Skip tasks whose `"blocked"` value is `True`.
-3. Return the `"name"` of the first unblocked task whose priority is at least `3`.
-4. If no such task exists, return `"No task ready"`.
-5. Use `continue` and `break`.
+2. Ignore blocked tasks.
+3. A task is ready only if it is unblocked and its priority is at least `3`.
+4. Return the name of the first ready task.
+5. If nothing is ready, return `"No task ready"`.
+6. Use `continue` and `break`.
 
 Example:
 >>> first_ready_task([
@@ -25,5 +26,5 @@ Example:
 'deploy'
 
 Thinking goal:
-This challenge is about tracing multiple conditions while stopping as soon as the right item appears.
+This drill is about combining a skip rule with a match rule and stopping exactly when the first real answer appears.
 """
