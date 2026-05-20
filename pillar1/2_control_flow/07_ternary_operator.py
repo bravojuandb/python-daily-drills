@@ -2,18 +2,20 @@
 Drill 07 - Ternary Operator
 
 Write a function:
-    classify_sign(num: int) -> str
+    movement_label(change: int) -> str
 
 Requirements:
-1. Return `"negative"` if the number is below `0`.
-2. Return `"zero"` if the number is exactly `0`.
-3. Return `"positive"` otherwise.
+1. Return `"down"` if the value is below `0`.
+2. Return `"flat"` if the value is exactly `0`.
+3. Return `"up"` otherwise.
 4. Use only nested ternary expressions.
 
 Example:
->>> classify_sign(7)
-'positive'
+>>> movement_label(7)
+'up'
+>>> movement_label(0)
+'flat'
 
 Thinking goal:
-This drill is about keeping a compact expression readable even when it has three outcomes.
+This drill is about writing a compact three-way decision without falling back to a full `if` block.
 """
