@@ -19,3 +19,20 @@ Example:
 Thinking goal:
 This drill is about deciding which values should be ignored, which value should end the search, and how to encode that control flow directly.
 """
+
+def first_affordable(price_tags: list[int], budget: int) -> int:
+    result = -1
+
+    for price in price_tags:
+        if price < 0:
+            continue
+
+        if price <= budget:
+            result = price
+            break
+
+    return result
+
+
+if __name__ == "__main__":
+    print(first_affordable([-5, 120, 150], 100))
