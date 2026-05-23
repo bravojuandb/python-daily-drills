@@ -19,3 +19,22 @@ Example:
 Thinking goal:
 This drill mixes filtering, branching, and ordered result-building in one loop without spelling out every line of the solution for you.
 """
+
+def tag_scores(scores: list[int]) -> list[str]:
+    result = []
+
+    for score in scores:
+        if score < 0:
+            continue
+        
+        if score >= 60:
+            label = "pass"
+        else:
+            label = "fail"
+        result.append(f"{score}: {label}")
+
+    return result
+
+
+if __name__ == "__main__":
+    print(tag_scores([80, -1, 55, 60]))
