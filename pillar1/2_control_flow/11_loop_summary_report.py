@@ -20,3 +20,19 @@ Example:
 Thinking goal:
 This drill is about classifying each input exactly once while maintaining a small running summary.
 """
+
+def summarize_temperatures(values: list[int]) -> dict[str, int]:
+    result = {"cold": 0, "mild": 0, "hot": 0}
+    for value in values:
+        if value < 0:
+            result["cold"] += 1
+        elif value <= 20:
+            result["mild"] += 1
+        else:
+            result["hot"] += 1
+    return result
+
+if __name__ == "__main__":
+    temperatures = [-2, 0, 15, 21, 30]
+
+    print(summarize_temperatures(temperatures))
