@@ -19,3 +19,19 @@ Example:
 Thinking goal:
 This drill is about choosing sensible defaults while still handling a small edge case intentionally.
 """
+
+def chant(phrase: str = "carpe diem", times: int = 3) -> str:
+
+    if times == 0:
+        return ""
+    
+    result = []
+    for _ in range(times):
+        result.append(phrase.upper())
+
+    return " | ".join(result)
+
+
+
+if __name__ == "__main__":
+    print(chant())
