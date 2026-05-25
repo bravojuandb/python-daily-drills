@@ -23,13 +23,12 @@ This drill is about making a function deterministic while applying a small seque
 
 def normalize_title(text: str) -> str:
 
-    text = text.split()
+    words = text.split()
 
-    if not text:
+    if not words:
         return "Untitled"
     
-    else:
-        return " ".join(text).title()
+    return " ".join(words).title()
     
 
 if __name__ == "__main__":
