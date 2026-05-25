@@ -20,3 +20,32 @@ Example:
 Thinking goal:
 This drill is about making a function deterministic while applying a small sequence of transformations.
 """
+
+def normalize_title(text: str) -> str:
+
+    text = text.split()
+
+    if not text:
+        return "Untitled"
+    
+    else:
+        return " ".join(text).title()
+    
+
+if __name__ == "__main__":
+
+    titles = [
+        "  the   odyssey ",
+        "",
+        "war and peace",
+        "   ",
+        "a tale of two cities",
+        "  data   engineering   basics",
+        "THE LORD OF THE RINGS",
+        "clean code",
+        "  python    daily drills  ",
+        "into the wild",
+    ]
+    for title in titles:
+        normalized = normalize_title(title)
+        print(repr(title), "----", normalized)
