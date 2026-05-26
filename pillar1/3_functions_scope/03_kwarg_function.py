@@ -19,3 +19,12 @@ Example:
 Thinking goal:
 This drill is about separating how a function is called from how it cleans and uses its inputs.
 """
+
+def greet_person(*, name: str, age: int, city: str) -> str:
+    city = city or "Unknown"
+
+    return f"Hello, my name is {name}, I am {age} years old, and I live in {city}."
+
+print(greet_person(name="Anna", age=29, city=""))
+
+
