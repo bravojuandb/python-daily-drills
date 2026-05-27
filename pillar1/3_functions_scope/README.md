@@ -14,8 +14,9 @@ After finishing `3_functions_scope`, you should be able to:
 - choose when default arguments improve clarity
 - read and call functions with keyword arguments confidently
 - understand the difference between local scope and global scope
-- use lambda expressions when the job is genuinely tiny
-- trace recursive functions through base cases and repeated calls
+- explain why assigning to a name can create `UnboundLocalError`
+- use `global` and `nonlocal` intentionally in small examples
+- trace Local, Enclosing, Global, and Built-in name lookup
 
 ## Drill Standards
 
@@ -42,20 +43,20 @@ Each drill in this chapter should ideally meet this bar:
 - `04_global_local_scope.py`
   Contrast intentional global mutation with a local variable that only looks similar.
 
-- `05_lambda_one_liner.py`
-  Use a tiny lambda with `map()` for a transformation that includes a condition.
+- `05_reading_vs_writing_globals.py`
+  Contrast reading a global name with assigning a local name.
 
-- `06_recursive_factorial.py`
-  Practice recursion with a clear base case and one invalid-input rule.
+- `06_unbound_local_error.py`
+  Fix a tiny `UnboundLocalError` case using `global` intentionally.
 
-- `07_recursive_fibonacci.py`
-  Trace recursive structure with two base cases and a boundary check.
+- `07_avoid_global_state.py`
+  Replace hidden global state with explicit input and output.
 
-- `08_helper_and_wrapper.py`
-  Separate one pure helper from one public function that prepares the input.
+- `08_enclosing_scope.py`
+  Return an inner function that reads from an enclosing scope.
 
-- `09_mutating_vs_non_mutating.py`
-  Write two similar functions where one mutates state and the other returns a fresh result.
+- `09_nonlocal_counter.py`
+  Use `nonlocal` to build independent closure-based counters.
 
-- `10_recursive_entrypoint.py`
-  Pair input validation in one function with recursion in another.
+- `10_legb_name_lookup.py`
+  Trace a small LEGB lookup example using local, enclosing, parameter, and built-in names.
