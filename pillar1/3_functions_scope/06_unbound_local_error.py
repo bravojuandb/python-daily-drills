@@ -31,3 +31,20 @@ Thinking goal:
 This drill is about Python's rule that assigning to a name inside a function makes it local
 unless you explicitly declare otherwise.
 """
+
+counter = 0
+
+def increment() -> int:
+    """
+    Intentionally increment by 1 the global variable counter. 
+    """
+    global counter
+    counter += 1
+    return counter
+
+# The broken version raises UnboundLocalError because assigning to counter
+# inside the function makes Python treat counter as local unless global is used.
+
+if __name__ == "__main__":
+    print(increment())
+    print(increment())
