@@ -19,3 +19,16 @@ Example:
 Thinking goal:
 This drill is about replacing hidden global state with explicit input and output.
 """
+
+
+def increment_counter(current: int) -> int:
+    if current < 0:
+        raise ValueError("current must not be negative")
+    return current + 1
+    
+if __name__ == "__main__":
+
+    for _ in range(5):
+        print(increment_counter(1))
+
+# key idea: state goes in, new state comes out
