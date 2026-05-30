@@ -24,3 +24,24 @@ Example:
 Thinking goal:
 This challenge is about an inner function remembering a name from its enclosing scope.
 """
+
+
+def make_prefixer(prefix: str):
+    prefix = prefix.strip()
+
+    def add_prefix(text: str = "") -> str:
+        text = text.strip()
+
+        if text == "":
+            text = "Untitled"
+
+        return f"{prefix}: {text}" # Inner function can remember prefix
+
+    return add_prefix
+
+
+if __name__ == "__main__":
+
+    label_error = make_prefixer("ERROR")
+    print(label_error("  file missing "))
+    print(label_error("   "))
