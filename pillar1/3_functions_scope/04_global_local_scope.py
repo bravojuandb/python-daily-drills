@@ -29,3 +29,36 @@ Thinking goal:
 This drill is about noticing that identical names can still belong to different scopes.
 One function changes module-level state; the other only changes its own local name.
 """
+
+counter = 0
+
+def increment() -> int:
+    global counter
+    counter += 1
+    return counter
+
+
+def preview_increment() -> int:
+    counter = 100
+    counter += 1
+    return counter
+
+print(increment())
+print(increment())
+print(increment())
+print(counter)
+print("--------------------")
+print(preview_increment())
+print(preview_increment())
+print(counter)
+
+"""
+increment() uses the global counter because we declare `global counter`
+inside the function. That allows the function to modify the module-level
+counter variable.
+
+preview_increment() creates a local variable also called counter.
+That local counter only exists inside the function, so it does not affect
+the global counter.
+Same name, different scope.
+"""
