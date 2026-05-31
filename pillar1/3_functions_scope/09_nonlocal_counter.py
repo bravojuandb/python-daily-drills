@@ -27,3 +27,25 @@ Example:
 Thinking goal:
 This challenge is about modifying a variable from an enclosing function scope without using a global.
 """
+
+def make_counter(start: int = 0):
+    count = start
+    def increment() -> int:
+        nonlocal count
+        count += 1
+        return count
+    
+    return increment
+
+
+
+if __name__ == "__main__":
+
+    counter_a = make_counter()
+    counter_b = make_counter(10)
+
+    print(counter_a())
+    print(counter_a())
+
+    print(counter_b())
+    print(counter_b())
