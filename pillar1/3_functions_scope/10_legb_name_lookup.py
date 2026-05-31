@@ -26,3 +26,19 @@ Example:
 Thinking goal:
 This challenge is about tracing Local, Enclosing, Global, and Built-in name lookup in a small example.
 """
+
+label = "global"
+
+def describe_lookup(prefix: str = "enclosing") -> tuple[str, str, str, int]:
+    # Enclosing scope
+    def read_names():
+        # Local scope + built-in lookup
+        local_label = "local"
+        return local_label, prefix, label, len("abc")
+
+    return read_names()
+
+
+if __name__ == "__main__":
+    print(describe_lookup())
+    print(describe_lookup("custom"))
