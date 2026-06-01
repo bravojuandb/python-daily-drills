@@ -2,15 +2,15 @@
 Drill 05 - Any and All Checker
 
 Write a function:
-    check_numbers(nums: list[int]) -> tuple[bool, bool]
+    review_scores(scores: list[int]) -> tuple[bool, bool]
 
 Requirements:
-1. Use `any()` with a generator expression to check whether any number is negative.
-2. Use `all()` with a generator expression to check whether all numbers are even.
-3. Return the results as `(has_negative, all_even)`.
+1. Use `any()` with a generator expression to check whether any score is below `50`.
+2. Use `all()` with a generator expression to check whether all scores are at most `100`.
+3. Return the results as `(has_failing_score, all_valid)`.
 
 Example:
->>> check_numbers([2, 4, -6, 8, 10])
+>>> review_scores([72, 88, 49, 100])
 (True, True)
 
 Thinking goal:
