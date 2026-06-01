@@ -18,3 +18,31 @@ Example:
 Thinking goal:
 This drill is about using one readable comprehension to clean user input in a way that feels realistic.
 """
+
+def clean_tags(tags: list[str]) -> list[str]:
+
+    return [tag.strip().lower() for tag in tags if tag.strip()]
+
+
+if __name__ == "__main__":
+
+    raw_tags = [
+        "  Python ",
+        "SQL",
+        " data engineering ",
+        "ETL",
+        "etl ",
+        " Airflow ",
+        " logging ",
+        "Testing",
+        " testing ",
+        "CI/CD",
+        " ci/cd ",
+        "Linux",
+        " linux ",
+        " Bash ",
+        "bash",
+        "  "
+    ]
+
+    print(clean_tags(raw_tags))
