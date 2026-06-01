@@ -2,7 +2,7 @@
 Drill 06 - Aggregator
 
 Write a function:
-    analyze_temps(temps: list[int]) -> tuple[int, int, int]
+    analyze_sales(sales: list[int]) -> tuple[int, int, int]
 
 Requirements:
 1. Use built-ins to compute the total sum, minimum, and maximum.
@@ -10,8 +10,8 @@ Requirements:
 3. If the input list is empty, raise `ValueError`.
 
 Example:
->>> analyze_temps([15, 22, 18, 30, 25, 19, 17])
-(146, 15, 30)
+>>> analyze_sales([120, 85, 210, 95, 160])
+(670, 85, 210)
 
 Thinking goal:
 This drill is about reaching for a direct built-in when the question is already built into Python.

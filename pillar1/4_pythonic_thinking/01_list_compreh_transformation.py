@@ -2,18 +2,19 @@
 Drill 01 - List Comprehension Transformation
 
 Write a function:
-    transform_list(nums: list[int]) -> list[int]
+    clean_tags(tags: list[str]) -> list[str]
 
 Requirements:
 1. Use one list comprehension.
-2. If a number is positive, include its square.
-3. If a number is negative, include its absolute value.
-4. Skip zeros.
+2. Strip surrounding whitespace from each tag.
+3. Convert each cleaned tag to lowercase.
+4. Skip any tag that becomes empty after stripping.
+5. Keep duplicates if the same normalized tag appears more than once.
 
 Example:
->>> transform_list([2, -3, 5, 0, -8, 7])
-[4, 3, 25, 8, 49]
+>>> clean_tags(["  Python ", "", " Data ", "PYTHON", "   "])
+['python', 'data', 'python']
 
 Thinking goal:
-This drill is about keeping a multi-case transformation compact without losing the logic.
+This drill is about using one readable comprehension to clean user input in a way that feels realistic.
 """
