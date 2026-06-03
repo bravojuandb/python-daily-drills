@@ -16,3 +16,12 @@ Example:
 Thinking goal:
 This drill is about reaching for a direct built-in when the question is already built into Python.
 """
+
+def analyze_temps(temps: list[int]) -> tuple[int, int, int]:
+    if not temps:
+        raise ValueError ("The list is empty")
+    return sum(temps), min(temps), max(temps)
+
+if __name__ == "__main__":
+    temperatures =[15, 22, 18, 30, 25, 19, 17]
+    print(analyze_temps(temperatures))
