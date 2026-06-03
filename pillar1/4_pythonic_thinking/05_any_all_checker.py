@@ -16,3 +16,12 @@ Example:
 Thinking goal:
 This drill is about asking direct yes-or-no questions without building extra lists.
 """
+
+def check_numbers(nums: list[int]) -> tuple[bool, bool]:
+    has_negative = any(num < 0 for num in nums)
+    all_even = all(num % 2 == 0 for num in nums)
+    return has_negative, all_even
+
+if __name__ == "__main__":
+    nums = [2, 4, -6, 8, 10]
+    print(check_numbers(nums))
