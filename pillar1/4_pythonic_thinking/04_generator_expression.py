@@ -19,3 +19,17 @@ the full generator sequence should be:
 Thinking goal:
 This drill is about understanding that a generator is consumed over time, not built all at once.
 """
+
+
+files = ["README.md", "SALES.CSV", "users.csv", "notes.txt"]
+
+gen = (
+    lower_file 
+    for file in files 
+    if (lower_file := file.lower()).endswith(".csv")
+)
+
+if __name__ == "__main__":
+
+    for _ in range(2):
+        print(next(gen))
