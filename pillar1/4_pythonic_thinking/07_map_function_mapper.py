@@ -16,3 +16,16 @@ Example:
 Thinking goal:
 This drill is about noticing when an existing function is clearer than writing a fresh loop.
 """
+
+
+def normalize_usernames(usernames: list[str]) -> tuple[list[str], list[str]]:
+
+    stripped = list(map(str.strip, usernames))
+    lowercased = list(map(str.lower, stripped))
+
+    return stripped, lowercased
+
+
+if __name__ == "__main__":
+    names = ["  Alice  ", "BOB", "  Carla"]
+    print(normalize_usernames(names))
