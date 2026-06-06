@@ -19,3 +19,14 @@ Example:
 Thinking goal:
 This drill is about mixing normalization, filtering, and mapping in one readable expression.
 """
+
+def summarize_tags(tags: list[str]) -> dict[str, int]:
+    return {
+        normalized_tag: len(normalized_tag)
+        for tag in tags
+        if len(normalized_tag := tag.strip().lower()) >= 4
+    }
+
+if __name__ == "__main__":
+    tags = [" Python ", "api", "Data", "PYTHON", " ml "]
+    print(summarize_tags(tags))
