@@ -17,3 +17,20 @@ Example:
 Thinking goal:
 This drill is about pairing aligned data cleanly while still guarding against silent mismatch.
 """
+
+
+def combine_scores(usernames: list[str], scores: list[int]) -> dict[str, int]:
+    """Combine usernames and scores into a dictionary, after stripping usernames"""
+
+    if len(usernames) != len(scores):
+        raise ValueError("Usernames and scores must have the same length")
+
+
+    usernames = map(str.strip, usernames)
+
+    return dict(zip(usernames, scores))
+
+if __name__ == "__main__":
+    names = [" Alice ", "Bob", " Carla"]
+    scores = [85, 92, 78]
+    print(combine_scores(names, scores))
