@@ -18,3 +18,20 @@ Example:
 Thinking goal:
 This drill is about separating a sequence into two views without manually managing indexes.
 """
+
+
+def split_users(usernames: list[str]) -> tuple[list[str], list[str]]:
+    """Split usernames into active users and guest users."""
+
+    active_users = list(filter(lambda name: not name.startswith("guest_"), usernames ))
+    guest_users = list(filter(lambda name: name.startswith("guest_"), usernames ))
+
+    return active_users, guest_users
+
+
+if __name__ == "__main__":
+
+    users = ["ana", "guest_14", "mike", "guest_temp", "zoe"]
+
+    print(split_users(users))
+
