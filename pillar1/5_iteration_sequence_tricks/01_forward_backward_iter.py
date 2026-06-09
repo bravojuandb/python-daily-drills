@@ -16,3 +16,20 @@ Example:
 Thinking goal:
 This drill is about noticing that direction is part of the logic, not just a loop detail.
 """
+
+
+def mirror_iter(words: list[str]) -> list[str]:
+    mirrored_words = []
+
+    for word in words:
+        mirrored_words.append(word)
+
+    for word in words[::-1]:
+        mirrored_words.append(word)
+        
+    return mirrored_words
+
+
+if __name__ == "__main__":
+    words = ["sun", "moon", "stars"]
+    print(mirror_iter(words))
