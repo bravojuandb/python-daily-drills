@@ -17,3 +17,12 @@ Example:
 Thinking goal:
 This drill is about reading slice boundaries and step sizes without trial and error.
 """
+
+
+def step_slice(nums: list[int]) -> tuple[list[int], list[int]]:
+    return nums[::2], nums[:-1:3]
+
+
+if __name__ == "__main__":
+    numbers = [10, 20, 30, 40, 50, 60, 70]
+    print(step_slice(numbers))
