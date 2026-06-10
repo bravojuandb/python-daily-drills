@@ -20,3 +20,26 @@ Example:
 Thinking goal:
 This drill is about keeping track of two dimensions and one repeating pattern at the same time.
 """
+
+
+def build_grid(rows: int, cols: int) -> list[str]:
+
+    result = []
+
+    for row in range(rows):
+        line = []
+        for col in range(cols):
+            if row == 0 or row == rows - 1 or col == 0 or col == cols -1:
+                line.append("#")
+            else:
+                if (row + col) % 2 == 0:
+                    line.append("A")
+                else:
+                    line.append("B")
+        result.append("".join(line))
+    return result
+
+
+if __name__ == "__main__":
+    print(build_grid(4, 7))
+
