@@ -17,3 +17,18 @@ Example:
 Thinking goal:
 This drill is about traversing a sequence by relationship, not just by individual value.
 """
+
+def pairwise_differences(nums: list[int]) -> list[int]:
+    result = []
+
+    for i in range(len(nums) - 1):
+        current = nums[i]
+        next_number = nums[i + 1]
+        result.append(next_number - current)
+
+    return result
+
+if __name__ == "__main__":
+    nums = [i**2 for i in range(20)]
+    print(nums)
+    print(pairwise_differences(nums))
