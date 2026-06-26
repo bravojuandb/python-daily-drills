@@ -18,3 +18,21 @@ Example:
 Thinking goal:
 This drill is about slicing a sequence by moving viewpoints instead of fixed chunks.
 """
+
+def windows(nums: list[int], width: int) -> list[list[int]]:
+
+    if width < 1:
+        raise ValueError("width must be at least 1")
+
+    result = []
+
+    for start in range(len(nums) - width + 1):
+        result.append(nums[start:start + width])
+
+    return result
+
+
+if __name__ == "__main__":
+    nums = [num for num in range(1,11)]
+    print(nums)
+    print(windows(nums, 3))
