@@ -21,3 +21,20 @@ True
 Thinking goal:
 This drill is about maintaining an invariant through the whole scan, not just checking counts at the end.
 """
+
+def is_balanced(text: str) -> bool:
+    stack = []
+    for char in text:
+        if char == "(":
+            stack.append(char)
+
+        elif char == ")":
+            if not stack:
+                return False
+            stack.pop()
+
+    return stack == [] 
+
+
+if __name__ == "__main__":
+    print(is_balanced("(()())"))
