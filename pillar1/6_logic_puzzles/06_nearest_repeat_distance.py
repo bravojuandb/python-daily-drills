@@ -38,6 +38,7 @@ def nearest_repeat_distance(nums: list[int]) -> int:
             min_distance = min(min_distance, distance)
 
         last_seen[val] = index
+        print(last_seen)
 
     if min_distance == len(nums):
         return -1
