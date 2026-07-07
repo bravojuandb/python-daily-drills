@@ -21,3 +21,17 @@ raises InsufficientFundsError
 Thinking goal:
 This drill is about signaling a rule violation clearly instead of silently returning a fake result.
 """
+
+class InsufficientFundsError(Exception):
+    pass
+
+def withdraw(balance: float, amount: float) -> float:
+    
+    if amount > balance:
+        raise InsufficientFundsError ("Error: not enough funds")
+    
+    return balance - amount
+
+if __name__ == "__main__":
+    print(withdraw(3, 1))
+    print(withdraw(0, 4))
