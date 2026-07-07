@@ -19,3 +19,15 @@ Example:
 Thinking goal:
 This drill is about catching one specific failure without hiding unrelated mistakes.
 """
+
+
+def safe_divide(a: int, b: int) -> float | str:
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "Error: Division by zero"
+    
+
+if __name__ == "__main__":
+    print(safe_divide(19, 2))
+    print(safe_divide(10, 0))
