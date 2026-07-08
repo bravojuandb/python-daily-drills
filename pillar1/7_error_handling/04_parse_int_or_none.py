@@ -19,3 +19,16 @@ None
 Thinking goal:
 This drill is about separating invalid text input from valid numeric input without overcomplicating the flow.
 """
+
+def parse_int(text: str) -> int | None:
+    stripped_text = text.strip()
+
+    try:
+        return int(stripped_text)
+    except ValueError:
+        return None
+
+
+if __name__ == "__main__":
+    print(repr(parse_int(" lex ")))
+    print(repr(parse_int(" 33 ")))
