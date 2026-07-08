@@ -10,11 +10,20 @@ Requirements:
 3. Use `try` / `except KeyError`.
 
 Example:
->>> lookup_price({"apple": 3, "banana": 2}, "apple")
-3
->>> lookup_price({"apple": 3, "banana": 2}, "pear")
+>>> prices = {
+...     "apple": 3,
+...     "banana": 2,
+...     "orange": 4,
+...     "mango": 6,
+...     "blueberries": 8,
+... }
+>>> lookup_price(prices, "mango")
+6
+>>> lookup_price(prices, "pear")
 'Error: Unknown item'
 
 Thinking goal:
 This drill is about handling a missing key intentionally instead of assuming the data is always complete.
 """
+
+
