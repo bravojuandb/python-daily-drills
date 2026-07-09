@@ -24,3 +24,28 @@ raises InvalidScoreError
 Thinking goal:
 This drill is about validating the domain first so the normal logic can stay simple.
 """
+
+
+class InvalidScoreError(Exception):
+    pass
+
+def grade_label(score: int) -> str:
+    if score < 0 or score > 100:
+        raise InvalidScoreError("Score out of range")
+
+    if score >= 60:
+        return "pass"
+    
+    return "fail"
+
+def main():
+    grades = [-1, 30, 65, 120]
+    for grade in grades:
+        try:
+            result = grade_label(grade)
+            print(f"{grade}: {result}")
+        except InvalidScoreError as error:
+            print(f"{grade}: invalid input ({error})")
+
+if __name__ == "__main__":
+    main()
