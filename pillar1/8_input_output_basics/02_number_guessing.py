@@ -19,3 +19,19 @@ Too low!
 Thinking goal:
 This drill is about connecting input, conversion, and comparison in one tiny interactive flow.
 """
+
+
+def guess_number() -> None:
+    secret_number = 7
+    guess = int(input("Guess a number: "))
+
+    if guess > secret_number:
+        print("Too high!")
+    elif guess < secret_number:
+        print("Too low!")
+    else:
+        print("Correct!")
+
+
+if __name__ == "__main__":
+    guess_number()
