@@ -19,3 +19,10 @@ Hello world
 Thinking goal:
 This drill is about building the smallest possible loop between external input and visible output.
 """
+
+def echo_input() -> None:
+    text = input("Type anything:")
+    print(text)
+    return None
+
+echo_input()
