@@ -18,3 +18,11 @@ Example:
 Thinking goal:
 This drill is about treating printed output as something precise, not approximate.
 """
+
+
+def format_customer(name: str, age: int, balance: float) -> str:
+    return f"Customer: {name.title()} | Age: {age} | Balance: €{balance:,.2f}"
+
+
+if __name__ == "__main__":
+    print(format_customer("Alice", 29, 1345.6789))
