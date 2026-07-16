@@ -19,8 +19,8 @@ Think in Python without stumbling on syntax.
 
 
 ## Pillar 2: Data Structures & Problem Solving
-Develop algorithmic thinking while manipulating real data collections.  
-- **What it covers:** Sorting, searching, aggregating, recursion, and data-structure patterns (lists, dicts, sets, stacks, queues).  
+Develop algorithmic thinking by selecting appropriate data structures, recognizing reusable processing patterns, and evaluating solution tradeoffs.  
+- **What it covers:** Data-structure selection, filtering and aggregation, searching and ranking, sequence and graph traversal, recursion, complexity analysis, performance tradeoffs, and applied data-processing challenges.  
 - [Contents](pillar2/README.md)
 
 
