@@ -1,100 +1,82 @@
-# Pillar 2 — Data Structures & Problem Solving (Bridging Logic and Data)
+# Pillar 2 — Data Structures & Problem Solving
 
-## 1. Foundational Algorithms
-- ✅ Sorting Numbers → `sorted()`, custom `key`
-- ✅ Sorting Dicts by Value → `sorted(dict.items(), key=...)`
-- ✅ Binary Search Implementation → `while low <= high`
-- ✅ Counting Frequencies → `collections.Counter`
-- ✅ Aggregating Totals → `sum()`, grouping by key
-- ✅ BONUS: Group Transactions by customer
-- ✅ Manual Min/Max Finder → loops
-- ✅ Detecting Duplicates → sets
-- ✅ Intersection of Lists → `set(list1) & set(list2)`
-- ✅ Flatten Nested List → `[x for sub in L for x in sub]`
-- ✅ Big-O Estimation (mental drills)
+Pillar 2 moves from knowing Python syntax to choosing representations, recognizing
+reusable patterns, and explaining why a solution is correct and efficient.
 
----
+## How to Work Through This Pillar
 
-## 2. Data Structure Patterns
-### Lists
-- ✅ Append/Extend & In-Place Sort  
-- ✅ Merge Two Lists Alternately  
-- ✅ Rotate List Elements (left/right)
-- ✅ Slice Copy vs Reference Test
+Complete the chapters and drills in numeric order. Each drill contains a prompt,
+function signature, requirements, examples, and a thinking goal. Replace `pass`
+with your solution, then add a few examples under a main guard if useful.
 
-### Tuples
-- ✅ Swap Variables via Tuple Unpacking  
-- ✅ Store Immutable Records  
-- ✅ Tuple as Dict Keys (coordinates, pairs)
+For every solution, ask:
 
-### Sets
-- ✅ Remove Duplicates  
-- ✅ Check Subsets/Supersets  
-- ✅ Compare Unique Items Across Lists  
-- ✅ Set-Based Membership Speed Test  
+- What information must be stored?
+- Does order, uniqueness, or mutability matter?
+- Which operation happens most often?
+- What invariant remains true while the algorithm runs?
+- What are the time and auxiliary-space costs?
 
-### Dicts
-- ✅ Count Word Occurrences  
-- ✅ Group Items by Category  
-- ✅ Merge Two Dicts with Conflict Rules  
-- ✅ Invert a Dict (value→key)
-- ✅ Nested Dict Access (safe `.get()`)
+## Complexity Checks
 
-### Stack/Queue Simulations
-- ✅ Build Stack with `list` → `.append()` / `.pop()`
-- ✅ Build Queue with `collections.deque`
-- ✅ Evaluate Expression (LIFO logic)
-- ✅ Check Balanced Brackets (stack)
+Every drill ends with a short complexity check. Its purpose is practical:
 
----
+- **Interview training:** practise explaining why your solution works and scales.
+- **Data-manipulation skill:** recognize when lists, sets, dictionaries, sorting,
+  or extra indexes will become expensive as the data grows.
 
-## 3. Applied Challenges
-*Drills marked with * are to be treated as project_style drills*
-- ✅ CSV Row Aggregator (manual parsing) *
-- ✅ Word Frequency Counter (text file)
-- ✅ Unique Visitors Counter (from log entries)
-- ✅ Detect Top-N Items (sorting by counts)
-- ✅ Group Transactions by Customer (dict of lists)
-- ✅ Simple ETL Transform (clean → aggregate → output) *
-- ✅ Recursive Directory Walk (simulate folder scan) *
-- ✅ Recursively Flatten Nested Dict *
-- ✅ Merge and Deduplicate JSON-like lists *
-- ✅ Build Mini Leaderboard (sort + dict)
+After each solution, state its worst-case time and extra-space Big-O. Then give
+one sentence naming the main cost and why your chosen structure or pattern fits.
 
----
+Example: “`O(n)` time because every record is visited once; `O(k)` extra space
+because the dictionary stores one entry per distinct customer.”
 
-## 4. Performance Awareness
-- ✅ Benchmark List vs Set Lookup → `%timeit`
-- ✅ Compare Loop vs Comprehension Runtime
-- ✅ Memory Use via `sys.getsizeof()`
-- ✅ Optimize Nested Loops into Dict Lookup
-- ✅ Analyze Algorithmic Complexity (O(n), O(log n))
+## How to Test Each Drill
 
-## 5. Common Patterns
+Write the tests after reading the prompt but before considering the drill
+complete. Use `pytest` and follow this short cycle:
 
-- **Iteration & Filtering** → selective traversal  
-  ✅ *Drill:* read a CSV and filter only rows where "status" == "active".
+1. Test the main example or normal case.
+2. Add an empty-input or boundary case when the prompt allows one.
+3. Test ordering, duplicates, ties, exceptions, and mutation rules when relevant.
+4. Run the individual test while solving, then run the chapter tests when done.
+5. Add a regression test whenever you discover a bug or overlooked edge case.
 
-- **Mapping & Transformation** → same size, new meaning  
-  ✅ *Drill:* convert a list of strings into dicts with derived fields (e.g. split "name,age" → {"name": ..., "age": ...}).
+Start with plain `assert` statements. Introduce parametrized tests, fixtures, and
+shared helpers only when repetition makes them useful. Test observable behavior,
+not implementation details. Keep Big-O analysis in the drill's complexity check;
+runtime-based complexity tests are usually unreliable.
 
-- **Aggregation** → reduction  
-  ✅ *Drill:* sum or average numerical values from a JSON list.
+Aim for at least one correctness test per drill, several edge-case tests for
+algorithmic drills, and broader malformed-data tests for applied challenges.
 
-- **Grouping** → partition + aggregate  
-  ✅ *Drill:* group transactions by customer and compute total amount.
+## Chapters
 
-- **Searching** → efficient lookup  
-  ✅ *Drill:* implement linear and binary search on a sorted list of IDs.
+1. **Data Structure Selection** — choose lists, tuples, sets, dictionaries,
+   stacks, and queues deliberately.
+2. **Core Processing Patterns** — filter, map, reduce, count, group, index,
+   deduplicate, and join records.
+3. **Searching, Ordering & Ranking** — search efficiently, sort with explicit
+   tie rules, and select top results.
+4. **Sequence & Traversal Patterns** — use two pointers, windows, prefix sums,
+   stacks, queues, DFS, BFS, and visited sets.
+5. **Complexity & Tradeoffs** — analyze runtime and memory, compare alternative
+   designs, and benchmark responsibly.
+6. **Applied Challenges** — combine several patterns in realistic pipelines.
 
-- **Recursion** → self-similar decomposition  
-  *Drill:* recursively count files in nested folders.
+## Drill Standard
 
-- **Sorting & Ranking** → comparison + order  
-  *Drill:* sort products by price and output the top 5.
+Every drill should eventually have:
 
-- **State Tracking** → remember what matters  
-  *Drill:* validate a string of parentheses using a stack.
+- one focused public function or small class
+- type hints and a clear return contract
+- deterministic behavior, including ties and edge cases
+- no work performed merely by importing the module
+- examples protected by `if __name__ == "__main__":`
+- a stated time and space complexity when algorithms are central
 
-- **Error-Aware Processing** → fail safely  
-  *Drill:* safely parse rows from a CSV with missing fields and log errors.
+## Legacy Material
+
+The original Pillar 2 material is preserved unchanged in `legacy/`, grouped by
+its former chapter names. It is reference material and is not part of the new
+recommended drill order.
