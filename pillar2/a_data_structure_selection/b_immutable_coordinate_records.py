@@ -16,10 +16,23 @@ Thinking goal: represent a fixed-shape record whose values should not mutate.
 
 
 def make_coordinate(x: int, y: int, label: str) -> tuple[int, int, str]:
-    pass
+    return x, y, label
 
 
 def move_coordinate(
     record: tuple[int, int, str], dx: int, dy: int
 ) -> tuple[int, int, str]:
-    pass
+    x, y, label = record
+    return x + dx, y + dy, label
+
+
+if __name__ == "__main__":
+    point = make_coordinate(1, 1, "B")
+    print(move_coordinate(point, 1, 1))
+
+
+# Worst-case time: O(1)
+# Worst-case extra space: O(1)
+# The record always contains three values, so unpacking, updating values, and creating
+# the new tuple are constant-time operations. Returning a new tuple preserves
+# the original record unchanged.
