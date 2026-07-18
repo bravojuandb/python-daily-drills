@@ -26,3 +26,17 @@ def test_append_event_preserves_duplicates():
     appended = append_event(original, "a")
 
     assert appended == ["a", "b", "a", "a"]
+
+
+# Test for b_inmutable_coordinate_records.py
+
+from pillar2.a_data_structure_selection.b_immutable_coordinate_records import make_coordinate, move_coordinate
+
+def test_input_tuple_remains_immutable():
+    original = 1, 1, "B"
+
+    moved = move_coordinate(original, 2, 2)
+    
+    assert moved == (3, 3, "B")
+    assert original == (1, 1, "B")
+    assert moved is not original
