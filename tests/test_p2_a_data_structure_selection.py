@@ -40,3 +40,16 @@ def test_input_tuple_remains_immutable():
     assert moved == (3, 3, "B")
     assert original == (1, 1, "B")
     assert moved is not original
+
+
+# Test for c_unique_normalized_tags.py
+
+from pillar2.a_data_structure_selection.c_unique_tags import unique_normalized_tags
+
+def test_function_normalization_and_uniqueness():
+    tags = [" Python ", "python   ", "ETL", "", "    "]
+    result = unique_normalized_tags(tags)
+    assert result == {"python", "etl"}
+
+def test_function_returns_empty_set_for_empty_list():
+    assert unique_normalized_tags([]) == set()
