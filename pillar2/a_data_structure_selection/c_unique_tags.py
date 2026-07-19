@@ -16,4 +16,15 @@ Thinking goal: choose a set when uniqueness matters and order does not.
 
 
 def unique_normalized_tags(tags: list[str]) -> set[str]:
-    pass
+    return {
+        normalized
+        for tag in tags
+        if (normalized := tag.strip().lower())
+
+    }
+
+
+# Worst-case time: O(n * m)
+# Worst-case extra space: O(n * m)
+# Every tag must be stripped, lowercased, and hashed.
+# A set is appropriate because it removes duplicates and does not guarantee output order.
