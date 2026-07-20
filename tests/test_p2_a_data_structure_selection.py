@@ -1,5 +1,7 @@
 """Tests for pillar2/a_data_structure_selection"""
 
+import pytest
+
 # Test for a_ordered_event_log.py
 
 from pillar2.a_data_structure_selection.a_ordered_event_log import append_event
@@ -53,3 +55,35 @@ def test_function_normalization_and_uniqueness():
 
 def test_function_returns_empty_set_for_empty_list():
     assert unique_normalized_tags([]) == set()
+
+
+
+# Test for d_id_lookup_index.py
+
+from pillar2.a_data_structure_selection.d_id_lookup_index import index_by_id
+
+
+def test_index_by_id_builds_lookup_without_mutating_records():
+    records = [
+        {"id": 7, "name": "Ada", "role": "engineer"},
+        {"id": 12, "name": "Grace", "role": "admiral"},
+        {"id": 3, "name": "Linus", "role": "engineer"},
+    ]
+    original = [record.copy() for record in records]
+
+    result = index_by_id(records)
+
+    assert result == {7: records[0], 12: records[1], 3: records[2]}
+    assert records == original
+
+
+def test_index_by_id_returns_empty_dict_for_empty_input():
+    assert index_by_id([]) == {}
+
+
+def test_index_by_id_rejects_duplicate_ids():
+    records = [{"id": 7, "name": "Ada"}, {"id": 7, "name": "Grace"}]
+
+    with pytest.raises(ValueError, match="Repeated ID"):
+        index_by_id(records)
+
