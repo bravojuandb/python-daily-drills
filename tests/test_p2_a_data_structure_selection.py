@@ -87,3 +87,4 @@ def test_index_by_id_rejects_duplicate_ids():
     with pytest.raises(ValueError, match="Repeated ID"):
         index_by_id(records)
 
+    assert unique_normalized_tags([]) == set()
