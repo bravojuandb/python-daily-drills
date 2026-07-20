@@ -39,8 +39,12 @@ def index_by_id(records: list[dict]) -> dict[int, dict]:
 
         if key in result:
             raise ValueError("Repeated ID")
-        
+
         result[key] = record
 
     return result
 
+# Worst-case time: O(n), assuming O(1) dictionary membership and insertion.
+# Worst-case extra space: O(n).
+# The main cost is visiting all n records once, and a dictionary fits because it
+# stores each unique ID as a key and supports direct lookup.
