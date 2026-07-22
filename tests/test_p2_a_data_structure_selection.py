@@ -87,3 +87,25 @@ def test_index_by_id_rejects_duplicate_ids():
     with pytest.raises(ValueError, match="Repeated ID"):
         index_by_id(records)
 
+
+# Test for e_composite_key_totals.py 
+
+
+from pillar2.a_data_structure_selection.e_composite_key_totals import aggregate_sales
+
+def test_aggregate_sales_return_aggregated_result():
+
+    sales = [
+        ("north", "pen", 2),
+        ("north", "pen", 4),
+        ("south", "notebook", 3),
+    ]
+    result = aggregate_sales(sales)
+
+    assert result == {
+        ("north", "pen"): 6,
+        ("south", "notebook"): 3,
+    }
+
+def test_aggregate_sales_returns_empty_dict():
+    assert aggregate_sales([]) == {}
