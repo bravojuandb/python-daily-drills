@@ -17,16 +17,26 @@ from __future__ import annotations
 
 class UndoHistory:
     def __init__(self) -> None:
-        pass
+        self.records = []
 
     def record(self, action: str) -> None:
-        pass
+        self.records.append(action)
 
     def undo(self) -> str | None:
-        pass
+        if self.records == []:
+            return None
+        return self.records.pop()
 
     def peek(self) -> str | None:
-        pass
+        if self.records == []:
+            return None
+        return self.records[-1]
 
     def is_empty(self) -> bool:
-        pass
+        return self.records == []
+
+
+# Worst-case time: O(1) for each method, but record() is amortized O(1) and worst-case O(n).
+# Worst-case extra space: O(n) where n is the number of recorded actions
+# The main cost in terms of space comes from storing all recoreded actions
+# A list fits this problem because it efficiently implements LIFO beheviour
