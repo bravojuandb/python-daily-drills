@@ -109,3 +109,48 @@ def test_aggregate_sales_return_aggregated_result():
 
 def test_aggregate_sales_returns_empty_dict():
     assert aggregate_sales([]) == {}
+
+
+# Test for drill f_stack_undo_history.py
+
+
+from pillar2.a_data_structure_selection.f_stack_undo_history import UndoHistory
+
+
+def test_undo_history_starts_empty():
+    new_history = UndoHistory()
+    assert new_history.is_empty()
+
+
+def test_undo_history_uses_last_in_first_out_order():
+    history = UndoHistory()
+    history.record("type text")
+    history.record("delete text")
+
+    assert history.undo() == "delete text"
+    assert history.undo() == "type text"
+
+
+def test_undo_history_peek_does_not_remove_action():
+    history = UndoHistory()
+    history.record("save file")
+
+    assert history.peek() == "save file"
+    assert not history.is_empty()
+
+
+def test_undo_history_returns_none_when_empty():
+    history = UndoHistory()
+
+    assert history.peek() is None
+    assert history.undo() is None
+
+def test_undo_history_raises_type_error_for_non_string_action():
+    with pytest.raises(TypeError, match="action must be a string"):
+        UndoHistory().record(3)
+
+
+@pytest.mark.parametrize("invalid_action", ["", "   ", "\n"])
+def test_undo_history_rejects_empty_action(invalid_action):
+    with pytest.raises(ValueError, match="action cannot be empty"):
+        UndoHistory().record(invalid_action)
