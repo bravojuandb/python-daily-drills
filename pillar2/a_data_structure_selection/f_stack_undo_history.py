@@ -20,6 +20,11 @@ class UndoHistory:
         self.records = []
 
     def record(self, action: str) -> None:
+        if not isinstance(action, str):
+            raise TypeError("action must be a string")
+        if not action.strip():
+            raise ValueError("action cannot be empty")
+
         self.records.append(action)
 
     def undo(self) -> str | None:
@@ -40,3 +45,8 @@ class UndoHistory:
 # Worst-case extra space: O(n) where n is the number of recorded actions
 # The main cost in terms of space comes from storing all recoreded actions
 # A list fits this problem because it efficiently implements LIFO beheviour
+
+
+new_history = UndoHistory()
+print(new_history.record(" "))
+print(new_history.is_empty())
