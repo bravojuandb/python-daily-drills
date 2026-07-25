@@ -154,3 +154,44 @@ def test_undo_history_raises_type_error_for_non_string_action():
 def test_undo_history_rejects_empty_action(invalid_action):
     with pytest.raises(ValueError, match="action cannot be empty"):
         UndoHistory().record(invalid_action)
+
+
+# Test for drill g_queue_task_processing.py 
+
+from pillar2.a_data_structure_selection.g_queue_task_processing import TaskQueue
+
+
+def test_task_queue_freturns_first_task_without_removing_it():
+    queue = TaskQueue()
+    queue.enqueue("task")
+
+    assert queue.peek() == "task"
+    assert queue.size() == 1
+
+def test_task_queue_follows_fifo_behaviour():
+    queue = TaskQueue()
+
+    queue.enqueue("first")
+    queue.enqueue("second")
+
+    assert queue.dequeue() == "first"
+    assert queue.dequeue() == "second"
+
+def test_dequeue_and_peek_return_none_whith_empty_queue():
+    queue = TaskQueue()
+
+    assert queue.dequeue() is None
+    assert queue.peek() is None
+
+def test_enqueue_raises_type_error_for_non_string_task():
+    queue = TaskQueue()
+
+    with pytest.raises(TypeError, match="task must be a string"):
+        queue.enqueue(3)
+
+@pytest.mark.parametrize("invalid_task", ["", " ", "\n"])
+def test_enqueue_rejects_empty_task(invalid_task):
+    queue = TaskQueue()
+
+    with pytest.raises(ValueError, match="task must not be empty"):
+        queue.enqueue(invalid_task)
