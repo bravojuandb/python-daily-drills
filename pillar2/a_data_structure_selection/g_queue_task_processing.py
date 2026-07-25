@@ -19,16 +19,33 @@ from collections import deque
 
 class TaskQueue:
     def __init__(self) -> None:
-        pass
+        self.tasks = deque()
 
     def enqueue(self, task: str) -> None:
-        pass
+        if not isinstance(task, str):
+            raise TypeError("task must be a string")
+        if not task.strip():
+            raise ValueError("task must not be empty")
+
+        self.tasks.append(task)
 
     def dequeue(self) -> str | None:
-        pass
+        if not self.tasks:
+            return None
+        
+        return self.tasks.popleft()
 
     def peek(self) -> str | None:
-        pass
+        if not self.tasks:
+            return None
+        
+        return self.tasks[0]
 
     def size(self) -> int:
-        pass
+        return len(self.tasks)
+
+
+# Worst-case time: O(1) for enqueue(), dequeue(), peek() and size()
+# Worst-case extra space: O(n) for storing n tasks
+# collections.deque() fits FIFO processing because append() and popleft()
+# operate at opposite ends in O(1) time.
