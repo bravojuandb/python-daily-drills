@@ -161,7 +161,7 @@ def test_undo_history_rejects_empty_action(invalid_action):
 from pillar2.a_data_structure_selection.g_queue_task_processing import TaskQueue
 
 
-def test_task_queue_freturns_first_task_without_removing_it():
+def test_task_queue_peek_returns_first_task_without_removing_it():
     queue = TaskQueue()
     queue.enqueue("task")
 
@@ -177,7 +177,7 @@ def test_task_queue_follows_fifo_behaviour():
     assert queue.dequeue() == "first"
     assert queue.dequeue() == "second"
 
-def test_dequeue_and_peek_return_none_whith_empty_queue():
+def test_dequeue_and_peek_return_none_with_empty_queue():
     queue = TaskQueue()
 
     assert queue.dequeue() is None
