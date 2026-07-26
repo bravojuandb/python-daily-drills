@@ -15,6 +15,8 @@ main cost and why your chosen data structure or pattern fits the problem.
 Thinking goal: translate required operations into an explicit structure choice.
 """
 
+# Disclaimer: This drill is designed as a priority classifier,
+# not as a true compatibility checker.
 
 def classify_requirements(
     *, order_matters: bool, unique_only: bool, keyed_lookup: bool, fifo: bool
