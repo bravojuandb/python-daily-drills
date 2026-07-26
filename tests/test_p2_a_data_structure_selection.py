@@ -195,3 +195,61 @@ def test_enqueue_rejects_empty_task(invalid_task):
 
     with pytest.raises(ValueError, match="task must not be empty"):
         queue.enqueue(invalid_task)
+
+
+# Test for drill h_choose_the_structure.py
+
+from pillar2.a_data_structure_selection.h_choose_the_structure import classify_requirements
+
+def test_raise_value_error_for_fifo_and_keyed_lookup():
+    with pytest.raises(ValueError, match="requirements conflict"):
+        classify_requirements(
+            order_matters=False,
+            unique_only=False,
+            keyed_lookup=True,
+            fifo=True
+        )
+
+@pytest.mark.parametrize(
+    "requirements, expected",
+    [
+        (
+            {
+                "order_matters": True,
+                "unique_only": False,
+                "keyed_lookup": False,
+                "fifo": True,
+            },
+            "deque",
+        ),
+        (
+            {
+                "order_matters": True,
+                "unique_only": True,
+                "keyed_lookup": True,
+                "fifo": False,
+            },
+            "dict",
+        ),
+        (
+            {
+                "order_matters": False,
+                "unique_only": True,
+                "keyed_lookup": False,
+                "fifo": False,
+            },
+            "set",
+        ),
+        (
+            {
+                "order_matters": True,
+                "unique_only": False,
+                "keyed_lookup": False,
+                "fifo": False,
+            },
+            "list",
+        ),
+    ],
+)
+def test_classify_requirements_returns_expected(requirements, expected):
+    assert classify_requirements(**requirements) == expected
