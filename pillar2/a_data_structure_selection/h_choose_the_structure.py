@@ -19,4 +19,24 @@ Thinking goal: translate required operations into an explicit structure choice.
 def classify_requirements(
     *, order_matters: bool, unique_only: bool, keyed_lookup: bool, fifo: bool
 ) -> str:
-    pass
+    """Evaluate requirements by priority.
+
+    Priority: fifo > keyed_lookup > unique_only > list.
+    """
+
+    if fifo and keyed_lookup:
+        raise ValueError("requirements conflict")
+    if fifo:
+        return "deque"
+    if keyed_lookup:
+        return "dict"
+    if unique_only:
+        return "set"
+    else:
+        return "list"
+
+
+# Worst-case time: O(1)
+# Worst-case extra space: O(1)
+# Checking a fixed number of Boolean flags in priority order has constant cost
+# and selects the structure that satisfies the highest-priority requirement.
