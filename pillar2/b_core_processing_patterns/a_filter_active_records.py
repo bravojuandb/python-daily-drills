@@ -14,4 +14,12 @@ Thinking goal: filtering may reduce collection size without changing each item.
 
 
 def filter_active(records: list[dict]) -> list[dict]:
-    pass
+    result = []
+    for record in records:
+        if record.get("status", "").strip().lower() == "active":
+            result.append(record)
+    return result
+
+# Worst-case time: O(n), because each record is checked once.
+# Worst-case extra space: O(n), because every record may enter the result list.
+# A list preserves input order and allows duplicate records.
