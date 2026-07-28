@@ -14,4 +14,15 @@ Thinking goal: mapping preserves cardinality while changing representation.
 
 
 def normalize_users(records: list[dict[str, str]]) -> list[dict[str, str]]:
-    pass
+    normalized = []
+
+    for record in records:
+        norm_record = {}
+
+        norm_record["name"] = record.get("name").strip().title()
+        norm_record["email"] = record.get("email").strip().lower()
+        norm_record["country"] = record.get("country").strip().upper()
+        normalized.append(norm_record)
+
+    return normalized
+
