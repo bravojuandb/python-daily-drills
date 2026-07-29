@@ -26,3 +26,7 @@ def normalize_users(records: list[dict[str, str]]) -> list[dict[str, str]]:
 
     return normalized
 
+# Worst-case time: O(n) as number of dictionary grows
+# Worst-case space: O(n)
+# Chosen data structure maps the input
+
