@@ -116,3 +116,22 @@ def test_normalize_returns_normalized_dicts_in_same_order():
         "country": "POLAND",
     }
 
+# Test for c_reduce_transaction_totals.py
+
+from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import total_paid
+
+
+def test_reduce_transactions_return_float_with_empty_input():
+    transactions = []
+    assert total_paid(transactions) == 0.0
+
+
+def test_reduce_transactions_sums_only_paid_amounts():
+    transactions = [
+        {"id": "1", "status": "paid", "amount": "34.0"},
+        {"id": "2", "status": "pending", "amount": "56"},
+        {"id": "3", "status": "paid", "amount": "23"},
+        {"id": "4", "status": "", "amount": "45"},
+    ]
+
+    assert total_paid(transactions) == 57.0
