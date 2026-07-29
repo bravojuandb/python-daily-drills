@@ -1,9 +1,11 @@
 """Tests for pillar2/b_core_processing_patterns.py"""
 
-# Test for a_filter_active_records.py
-
 from pillar2.b_core_processing_patterns.a_filter_active_records import filter_active
+from pillar2.b_core_processing_patterns.b_normalize_records import normalize_users
+from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import total_paid
+from pillar2.b_core_processing_patterns.d_count_frequencies import count_frequencies
 
+# Test for a_filter_active_records.py
 
 def test_filter_active_keeps_active_records():
     records = [
@@ -62,8 +64,6 @@ def test_filter_active_does_not_mutate_input_records():
 
 # Test for b_normalilze_records.py
 
-from pillar2.b_core_processing_patterns.b_normalize_records import normalize_users
-
 def test_normalize_user_returns_new_dictionaries():
     records = [
     {
@@ -118,9 +118,6 @@ def test_normalize_returns_normalized_dicts_in_same_order():
 
 # Test for c_reduce_transaction_totals.py
 
-from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import total_paid
-
-
 def test_reduce_transactions_return_float_with_empty_input():
     transactions = []
     assert total_paid(transactions) == 0.0
@@ -135,3 +132,21 @@ def test_reduce_transactions_sums_only_paid_amounts():
     ]
 
     assert total_paid(transactions) == 57.0
+
+
+# Test for d_count_frequencies.py
+
+def test_count_frequencies_returns_expected():
+    items = ["pen", "notebook", "pen", "stapler", "notebook", "pen"]
+
+    assert count_frequencies(items) == {
+        "pen": 3,
+        "notebook": 2,
+        "stapler": 1,
+    }
+
+
+def test_count_frequencies_preserve_order():
+    items = ["notebook", "pen", "notebook", "stapler", "pen"]
+
+    assert list(count_frequencies(items)) == ["notebook", "pen", "stapler"]
