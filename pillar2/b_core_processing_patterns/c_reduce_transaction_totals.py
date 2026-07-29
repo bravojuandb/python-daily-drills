@@ -14,4 +14,14 @@ Thinking goal: reduction turns many values into one accumulated result.
 
 
 def total_paid(transactions: list[dict]) -> float:
-    pass
+    result = 0
+    for t in transactions:
+        if t["status"] == "paid":
+            result += float(t["amount"])
+            
+    return float(result)
+
+# Time: O(n), because each transaction is examined once.
+# Extra space: O(1), because only one running total is stored - it usese only one accumulator
+# A one-pass reduction fits because many transaction amounts are accumulated 
+# into one result without creating another collection.
