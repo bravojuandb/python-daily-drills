@@ -14,4 +14,22 @@ Thinking goal: grouping maps one key to a growing collection of matching items.
 
 
 def group_by_department(employees: list[dict]) -> dict[str, list[dict]]:
-    pass
+    result = {}
+
+    for record in employees:
+        group_key = record["department"]
+
+        if group_key not in result:
+            result[group_key] = []
+
+        result[group_key].append(record)
+
+    return result
+
+
+# Time: O(n), because every employee record is processed once, with
+# average O(1) dictionary lookup and list append operations.
+
+# Extra space: O(n + k), which simplifies to O(n), where n is the number
+# of employee references stored in the lists and k is the number of
+# distinct department keys.
