@@ -5,6 +5,7 @@ from pillar2.b_core_processing_patterns.b_normalize_records import normalize_use
 from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import total_paid
 from pillar2.b_core_processing_patterns.d_count_frequencies import count_frequencies
 from pillar2.b_core_processing_patterns.e_group_records import group_by_department
+from pillar2.b_core_processing_patterns.f_build_an_index import index_prices
 
 
 # Test for a_filter_active_records.py
@@ -202,3 +203,17 @@ def test_group_by_department_preserves_first_department_appearance():
     result = group_by_department(employees)
 
     assert employees[0]["department"] == next(iter(result))
+
+
+# Test for f_build_an_index.py 
+
+def test_index_prices_uses_latest_price():
+    products = [
+        {"sku": "A100", "price": 12.50},
+        {"sku": "B200", "price": 8.99},
+        {"sku": "A100", "price": 13.25},
+    ]
+
+    assert index_prices(products) == {"A100": 13.25, "B200": 8.99}
+
+
