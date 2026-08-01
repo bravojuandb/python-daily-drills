@@ -16,4 +16,14 @@ Thinking goal: pay O(n) once to enable average O(1) keyed lookups.
 
 
 def index_prices(products: list[dict]) -> dict[str, float]:
-    pass
+    result = {}
+    for product in products:
+        result[product["sku"]] = product["price"]
+    return result
+
+
+# Time: O(n) because the for loop processes each product once,
+# and each dictionary insertion or update is O(1) in average.
+# Space: O(n) since adding new SKUs produces an index of n entries.
+# A dictionary is a good choice because it allows unique keys,
+# and repeated SKUs overwrite earlier prices.
