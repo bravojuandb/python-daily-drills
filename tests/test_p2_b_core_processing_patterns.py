@@ -1,11 +1,24 @@
 """Tests for pillar2/b_core_processing_patterns.py"""
 
-from pillar2.b_core_processing_patterns.a_filter_active_records import filter_active
-from pillar2.b_core_processing_patterns.b_normalize_records import normalize_users
-from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import total_paid
-from pillar2.b_core_processing_patterns.d_count_frequencies import count_frequencies
-from pillar2.b_core_processing_patterns.e_group_records import group_by_department
+from pillar2.b_core_processing_patterns.a_filter_active_records import (
+    filter_active,
+)
+from pillar2.b_core_processing_patterns.b_normalize_records import (
+    normalize_users,
+)
+from pillar2.b_core_processing_patterns.c_reduce_transaction_totals import (
+    total_paid,
+)
+from pillar2.b_core_processing_patterns.d_count_frequencies import (
+    count_frequencies,
+)
+from pillar2.b_core_processing_patterns.e_group_records import (
+    group_by_department,
+)
 from pillar2.b_core_processing_patterns.f_build_an_index import index_prices
+from pillar2.b_core_processing_patterns.g_deduplicate_last_write_wins import (
+    deduplicate_users,
+)
 
 
 # Test for a_filter_active_records.py
@@ -89,8 +102,8 @@ def test_normalize_user_returns_new_dictionaries():
 
     assert normalized is not records
     assert all(
-        norm_record is not orig_record 
-        for norm_record, orig_record 
+        norm_record is not orig_record
+        for norm_record, orig_record
         in zip(normalized, records)
     )
 
@@ -159,28 +172,88 @@ def test_count_frequencies_preserve_order():
 def test_group_by_department_groups_records_under_department_keys():
 
     employees = [
-        {"id": 101, "name": "Ana", "department": "Engineering", "level": "Senior"},
+        {
+            "id": 101,
+            "name": "Ana",
+            "department": "Engineering",
+            "level": "Senior",
+        },
         {"id": 102, "name": "Luis", "department": "Sales", "level": "Junior"},
-        {"id": 103, "name": "Marta", "department": "Engineering", "level": "Junior"},
-        {"id": 104, "name": "Omar", "department": "Finance", "level": "Senior"},
+        {
+            "id": 103,
+            "name": "Marta",
+            "department": "Engineering",
+            "level": "Junior",
+        },
+        {
+            "id": 104,
+            "name": "Omar",
+            "department": "Finance",
+            "level": "Senior",
+        },
         {"id": 105, "name": "Sofia", "department": "Sales", "level": "Senior"},
-        {"id": 106, "name": "Diego", "department": "Engineering", "level": "Mid"},
-        {"id": 107, "name": "Elena", "department": "Finance", "level": "Junior"},
+        {
+            "id": 106,
+            "name": "Diego",
+            "department": "Engineering",
+            "level": "Mid",
+        },
+        {
+            "id": 107,
+            "name": "Elena",
+            "department": "Finance",
+            "level": "Junior",
+        },
     ]
 
     expected = {
         "Engineering": [
-            {"id": 101, "name": "Ana", "department": "Engineering", "level": "Senior"},
-            {"id": 103, "name": "Marta", "department": "Engineering", "level": "Junior"},
-            {"id": 106, "name": "Diego", "department": "Engineering", "level": "Mid"},
+            {
+                "id": 101,
+                "name": "Ana",
+                "department": "Engineering",
+                "level": "Senior",
+            },
+            {
+                "id": 103,
+                "name": "Marta",
+                "department": "Engineering",
+                "level": "Junior",
+            },
+            {
+                "id": 106,
+                "name": "Diego",
+                "department": "Engineering",
+                "level": "Mid",
+            },
         ],
         "Sales": [
-            {"id": 102, "name": "Luis", "department": "Sales", "level": "Junior"},
-            {"id": 105, "name": "Sofia", "department": "Sales", "level": "Senior"},
+            {
+                "id": 102,
+                "name": "Luis",
+                "department": "Sales",
+                "level": "Junior",
+            },
+            {
+                "id": 105,
+                "name": "Sofia",
+                "department": "Sales",
+                "level": "Senior",
+            },
         ],
         "Finance": [
-            {"id": 104, "name": "Omar", "department": "Finance", "level": "Senior"},
-            {"id": 107, "name": "Elena", "department": "Finance", "level": "Junior"},
+            {
+                "id": 104,
+                "name": "Omar",
+                "department": "Finance",
+                "level": "Senior",
+            },
+            {
+                "id": 107,
+                "name": "Elena",
+                "department": "Finance",
+                "level": "Junior",
+            },
         ],
     }
     result = group_by_department(employees)
@@ -205,7 +278,7 @@ def test_group_by_department_preserves_first_department_appearance():
     assert employees[0]["department"] == next(iter(result))
 
 
-# Test for f_build_an_index.py 
+# Test for f_build_an_index.py
 
 def test_index_prices_uses_latest_price():
     products = [
@@ -217,3 +290,41 @@ def test_index_prices_uses_latest_price():
     assert index_prices(products) == {"A100": 13.25, "B200": 8.99}
 
 
+# Test for g_deduplicate_last_write_wins.py
+
+
+def test_deduplicate_users_returns_empty_for_empty_input():
+    assert deduplicate_users([]) == []
+
+
+def test_deduplicate_users_skips_missing_or_blank_emails():
+    records = [
+        {"email": ""},
+        {"name": "No email"},
+    ]
+
+    assert deduplicate_users(records) == []
+
+
+def test_deduplicate_users_keeps_last_duplicate_record():
+    records = [
+        {"email": "A@example.com", "name": "First"},
+        {"email": "a@example.com", "name": "Last"},
+    ]
+
+    assert deduplicate_users(records) == [
+        {"email": "a@example.com", "name": "Last"}
+    ]
+
+
+def test_deduplicate_users_preserves_first_email_position():
+    records = [
+        {"email": "a@example.com", "name": "First A"},
+        {"email": "b@example.com", "name": "B"},
+        {"email": "A@example.com", "name": "Last A"},
+    ]
+
+    assert deduplicate_users(records) == [
+        {"email": "A@example.com", "name": "Last A"},
+        {"email": "b@example.com", "name": "B"},
+    ]
