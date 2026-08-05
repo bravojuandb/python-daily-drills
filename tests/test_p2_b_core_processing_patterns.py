@@ -19,7 +19,9 @@ from pillar2.b_core_processing_patterns.f_build_an_index import index_prices
 from pillar2.b_core_processing_patterns.g_deduplicate_last_write_wins import (
     deduplicate_users,
 )
-
+from pillar2.b_core_processing_patterns.h_join_records_by_key import (
+    enrich_orders,
+)
 
 # Test for a_filter_active_records.py
 
@@ -328,3 +330,36 @@ def test_deduplicate_users_preserves_first_email_position():
         {"email": "A@example.com", "name": "Last A"},
         {"email": "b@example.com", "name": "B"},
     ]
+
+
+# Test for h_join_records_by_key.py
+
+
+def test_enrich_orders_adds_prices_and_handles_unknown_skus():
+    orders = [
+        {"order_id": 1, "sku": "A100", "quantity": 2},
+        {"order_id": 2, "sku": "UNKNOWN", "quantity": 1},
+    ]
+    products = [{"sku": "A100", "unit_price": 12.50}]
+
+    assert enrich_orders(orders, products) == [
+        {"order_id": 1, "sku": "A100", "quantity": 2, "unit_price": 12.50},
+        {"order_id": 2, "sku": "UNKNOWN", "quantity": 1, "unit_price": None},
+    ]
+
+
+def test_enrich_orders_uses_last_price_without_mutating_orders():
+    orders = [{"order_id": 1, "sku": "A100", "quantity": 2}]
+    original_orders = [order.copy() for order in orders]
+    products = [
+        {"sku": "A100", "unit_price": 12.50},
+        {"sku": "A100", "unit_price": 13.25},
+    ]
+
+    result = enrich_orders(orders, products)
+
+    assert result == [
+        {"order_id": 1, "sku": "A100", "quantity": 2, "unit_price": 13.25}
+    ]
+    assert orders == original_orders
+    assert result[0] is not orders[0]
