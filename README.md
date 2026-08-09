@@ -1,5 +1,7 @@
 # Python Daily Drills 
 
+[![Tests and lint](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml/badge.svg)](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml)
+
 A structured collection of Python exercises focused on data manipulation, problem-solving, automation, and data systems.
 
 The exercises are organized into four foundational areas, which I call pillars:
