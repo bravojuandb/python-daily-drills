@@ -16,4 +16,24 @@ Thinking goal: initialize state from valid data rather than arbitrary sentinels.
 
 
 def min_max(numbers: list[int]) -> tuple[int, int]:
-    pass
+
+    if not numbers:
+        raise ValueError("numbers cannot be empty")
+
+    min_number = numbers[0]
+    max_number = numbers[0]
+
+    for index in range(1, len(numbers)):
+        number = numbers[index]
+
+        if number < min_number:
+            min_number = number
+        elif number > max_number:
+            max_number = number
+
+    return min_number, max_number
+
+
+# Worst-case time is O(n) because the loop examines every item once.
+# Auxiliary space is O(1) because the function stores only the current
+# minimum and maximum, regardless of the input size.
