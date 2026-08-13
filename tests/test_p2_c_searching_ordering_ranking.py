@@ -1,5 +1,7 @@
+import pytest
 from pillar2.c_searching_ordering_ranking.a_linear_search import linear_search
 from pillar2.c_searching_ordering_ranking.b_binary_search import binary_search
+from pillar2.c_searching_ordering_ranking.c_manual_min_max import min_max
 
 
 def test_linear_search_returns_first_occurrence():
@@ -44,3 +46,21 @@ def test_binary_search_finds_one_occurrence_when_duplicates_exist():
 def test_binary_search_works_with_negative_numbers():
     items = [-20, -10, -3, 0, 8]
     assert binary_search(items, -10) == 1
+
+
+# Test for drill c_manual_min_max.py
+
+
+def test_min_max_raises_value_error_for_empty_list():
+    numbers = []
+    with pytest.raises(ValueError, match= "numbers cannot be empty"):
+        min_max(numbers)
+
+
+def test_min_max_returns_expected():
+    numbers = [0, 1, -2, 7, 23, 34, -45]
+    assert min_max(numbers) == (-45, 34)
+
+
+def test_min_max_with_single_number():
+    assert min_max([5]) == (5, 5)
