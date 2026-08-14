@@ -16,4 +16,12 @@ Thinking goal: encode every tie rule in one deterministic sort key.
 
 
 def sort_scores(scores: dict[str, int]) -> list[tuple[str, int]]:
-    pass
+
+    result = []
+
+    for name, score in scores.items():
+        result.append((name, score))
+
+    result.sort(key=lambda pair: (-pair[1], pair[0].lower()))
+    return result
+
