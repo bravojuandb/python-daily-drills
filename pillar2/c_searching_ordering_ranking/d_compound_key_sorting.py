@@ -16,12 +16,12 @@ Thinking goal: encode every tie rule in one deterministic sort key.
 
 
 def sort_scores(scores: dict[str, int]) -> list[tuple[str, int]]:
-
-    result = []
-
-    for name, score in scores.items():
-        result.append((name, score))
-
+    result = list(scores.items())
     result.sort(key=lambda pair: (-pair[1], pair[0].lower()))
     return result
 
+
+# Worst-case time: O(n log n), because sorting n score entries dominates.
+# Worst-case extra space: O(n), for the output list and temporary sorting data.
+# Sorting dominates the running time, and a list of tuples fits because it 
+# can store the dictionary items separately and be ordered using one compound key.
