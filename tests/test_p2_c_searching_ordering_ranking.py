@@ -2,6 +2,8 @@ import pytest
 from pillar2.c_searching_ordering_ranking.a_linear_search import linear_search
 from pillar2.c_searching_ordering_ranking.b_binary_search import binary_search
 from pillar2.c_searching_ordering_ranking.c_manual_min_max import min_max
+from pillar2.c_searching_ordering_ranking.d_compound_key_sorting import (
+    sort_scores)
 
 
 def test_linear_search_returns_first_occurrence():
@@ -64,3 +66,31 @@ def test_min_max_returns_expected():
 
 def test_min_max_with_single_number():
     assert min_max([5]) == (5, 5)
+
+
+# Test for drill d_compound_key_sorting.py
+
+
+def test_sort_scores_uses_score_then_name():
+    scores = {"Zoe": 8, "amy": 10, "Bob": 10}
+    result = sort_scores(scores)
+    assert result == [("amy", 10), ("Bob", 10), ("Zoe", 8)]
+
+
+def test_sort_scores_does_not_mutate_input():
+    scores = {"Zoe": 8, "amy": 10, "Bob": 10}
+    original = scores.copy()
+    sort_scores(scores)
+    assert scores == original
+
+
+def test_sort_scores_orders_scores_descending():
+    scores = {"amy": 5, "andrew": 20, "alex": 0}
+    result = sort_scores(scores)
+    assert result == [("andrew", 20), ("amy", 5), ("alex", 0)]
+
+
+def test_sort_scores_breaks_score_ties_by_name():
+    scores = {"Zoe": 8, "amy": 10, "Bob": 10}
+    result = sort_scores(scores)
+    assert result == [("amy", 10), ("Bob", 10), ("Zoe", 8)]
