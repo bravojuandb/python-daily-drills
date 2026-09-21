@@ -16,4 +16,15 @@ Thinking goal: separate the read position from the next write position.
 
 
 def compact_sorted(numbers: list[int]) -> int:
-    pass
+    if not numbers:
+        return 0
+
+    write_index = 1
+
+    for read_index in range(1, len(numbers)):
+        if numbers[read_index] != numbers[write_index - 1]:
+            numbers[write_index] = numbers[read_index]
+            write_index += 1
+
+    return write_index
+
