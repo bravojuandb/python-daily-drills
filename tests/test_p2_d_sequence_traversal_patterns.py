@@ -1,6 +1,10 @@
 import pytest
+
 from pillar2.d_sequence_traversal_patterns.a_two_pointer_pair_sum import (
     has_pair_with_sum,
+)
+from pillar2.d_sequence_traversal_patterns.b_deduplicate_sorted_list import (
+    compact_sorted,
 )
 from pillar2.d_sequence_traversal_patterns.c_fixed_sliding_window import (
     max_window_sum,
@@ -49,3 +53,25 @@ def test_max_window_sum_rejects_invalid_sizes():
     for size in (-1, 0, 4):
         with pytest.raises(ValueError):
             max_window_sum([1, 2, 3], size)
+
+
+def test_compact_sorted_returns_distinct_count():
+    numbers = [1, 1, 2, 2, 5]
+    k = 3
+    assert compact_sorted(numbers) == k
+    assert numbers[:k] == [1, 2, 5]
+
+
+def test_compact_sorted_returns_zero_for_empty_list():
+    assert compact_sorted([]) == 0
+
+
+def test_compact_sorted_returns_one_for_single_element():
+    assert compact_sorted([5]) == 1
+
+
+def test_compact_sorted_handles_negative_values_and_zero():
+    numbers = [-5, -5, -1, -1, 0, 3, 3]
+    k = 4
+    assert compact_sorted(numbers) == k
+    assert numbers[:k] == [-5, -1, 0, 3]
