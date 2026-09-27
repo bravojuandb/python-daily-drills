@@ -28,3 +28,6 @@ def compact_sorted(numbers: list[int]) -> int:
 
     return write_index
 
+
+# Time: O(n), where n is the list length; we scan the list once.
+# Extra space: O(1); two indices let us update the list without copying it.
