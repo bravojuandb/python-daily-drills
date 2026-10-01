@@ -15,11 +15,24 @@ Each pillar is foundational to working with data in Python.
 
 ## Current repository status
 
-Pillar 1 is established. Pillar 2 is being restructured; its previous material, including unsolved drills, is preserved locally in `archive/pillar2/legacy1/` and `archive/pillar2/legacy2/`. The `archive/` directory is ignored by Git.
+Pillar 1 is established. Pillar 2's new curriculum begins with
+[Linear Processing](pillar2/a_fundamentals_and_complexity/a_linear_processing/README.md)
+under Fundamentals & Complexity. Its six drills have prompts and unsolved
+function templates; the remaining curriculum is planned. Existing code and
+templates do not establish that an exercise has been verified or understood.
+
+Previous Pillar 2 material, including unfinished drills and its chapter tests,
+is preserved locally in `archive/pillar2/legacy1/` and
+`archive/pillar2/legacy2/`. The `archive/` directory is ignored by Git and is
+not included in new clones.
 
 Pillars 3 and 4 are incomplete and will be reviewed later. Their current folders and README files are placeholders for topics I plan to develop.
 
-The pillars are divided into smaller groups. Pillar 1 uses numbers, while the archived second version of Pillar 2 uses letters. The letter-based names preserve their intended order while keeping the directories valid as importable Python modules for testing.
+Pillar 1 uses numbered chapters. Pillar 2 uses three curricular layers:
+algorithmic family, pattern, and progressive drills. Families and patterns
+have letter prefixes; drills use local numbering. For example:
+`pillar2/a_fundamentals_and_complexity/a_linear_processing/drill_01_count_matches.py`.
+The names preserve order while remaining valid as importable Python modules.
 
 Each smaller group consists of exercises—called drills—that follow this structure:
 
@@ -36,7 +49,7 @@ Complexity check: Define big O notation for time and space
 Thinking goal: desired takeaway.
 """
 
-Function definition and solution
+Function signature and learner implementation (or an unsolved template)
 
 ```
 
@@ -52,6 +65,8 @@ Think in Python without stumbling on syntax.
 ### Pillar 2: Data Structures & Problem Solving (Under Restructuring)
 Develop algorithmic thinking by selecting appropriate data structures, recognizing reusable processing patterns, and evaluating solution tradeoffs.  
 - **What it covers:** Data-structure selection, filtering and aggregation, searching and ranking, sequence and graph traversal, recursion, complexity analysis, performance tradeoffs, and applied data-processing challenges.  
+- **Available now:** Six Linear Processing drills: count matches, running total, maximum, minimum, second largest distinct value, and longest streak.
+- **Planned progression:** Fundamentals & Complexity → Searching & Sorting → Hashing & Lookup → Sequence Patterns → Stacks & Queues → Recursion → Divide & Conquer → Dynamic Programming → Node-Based Structures → Graphs.
 - [Contents](pillar2/README.md)
 
 
