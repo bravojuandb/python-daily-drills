@@ -15,11 +15,11 @@ Each pillar is foundational to working with data in Python.
 
 ## Current repository status
 
-This repository is currently focused on Pillars 1 and 2. Pillar 1 is established, while Pillar 2 is still in progress and includes some unsolved drills.
+Pillar 1 is established. Pillar 2 is being restructured; its previous material, including unsolved drills, is preserved locally in `archive/pillar2/legacy1/` and `archive/pillar2/legacy2/`. The `archive/` directory is ignored by Git.
 
 Pillars 3 and 4 are incomplete and will be reviewed later. Their current folders and README files are placeholders for topics I plan to develop.
 
-The pillars are divided into smaller groups. Pillar 1 uses numbers, while Pillar 2 uses letters. The letter-based names preserve their intended order while keeping the directories valid as importable Python modules for testing.
+The pillars are divided into smaller groups. Pillar 1 uses numbers, while the archived second version of Pillar 2 uses letters. The letter-based names preserve their intended order while keeping the directories valid as importable Python modules for testing.
 
 Each smaller group consists of exercises—called drills—that follow this structure:
 
@@ -49,7 +49,7 @@ Think in Python without stumbling on syntax.
 - [Contents](pillar1/README.md)
 
 
-### Pillar 2: Data Structures & Problem Solving
+### Pillar 2: Data Structures & Problem Solving (Under Restructuring)
 Develop algorithmic thinking by selecting appropriate data structures, recognizing reusable processing patterns, and evaluating solution tradeoffs.  
 - **What it covers:** Data-structure selection, filtering and aggregation, searching and ranking, sequence and graph traversal, recursion, complexity analysis, performance tradeoffs, and applied data-processing challenges.  
 - [Contents](pillar2/README.md)
