@@ -27,4 +27,14 @@ What must the accumulator represent after processing any prefix of the list?
 
 
 def running_total(numbers: list[int]) -> int:
-    raise NotImplementedError("Implement this drill.")
+    num_sum = 0
+
+    for number in numbers:
+        num_sum += number
+
+    return num_sum
+
+# O(n) time because each number of the list is visited once. 
+# Time grows proportional to the amount of items on the array.
+# O(1) auxiliary space because only the running total and current element
+# are stored; no additional collection grows with the input.
