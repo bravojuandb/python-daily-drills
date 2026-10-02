@@ -65,7 +65,7 @@ Think in Python without stumbling on syntax.
 ### Pillar 2: Data Structures & Problem Solving (Under Restructuring)
 Develop algorithmic thinking by selecting appropriate data structures, recognizing reusable processing patterns, and evaluating solution tradeoffs.  
 - **What it covers:** Data-structure selection, filtering and aggregation, searching and ranking, sequence and graph traversal, recursion, complexity analysis, performance tradeoffs, and applied data-processing challenges.  
-- **Available now:** Six Linear Processing drills: count matches, running total, maximum, minimum, second largest distinct value, and longest streak.
+- **Available now:** Six Linear Processing drills: count matches, running total, maximum, first minimum's position, second largest distinct value, and longest streak.
 - **Planned progression:** Fundamentals & Complexity → Searching & Sorting → Hashing & Lookup → Sequence Patterns → Stacks & Queues → Recursion → Divide & Conquer → Dynamic Programming → Node-Based Structures → Graphs.
 - [Contents](pillar2/README.md)
 
