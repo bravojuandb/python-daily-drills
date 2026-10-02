@@ -28,4 +28,20 @@ when a value ties the smallest one already seen?
 
 
 def find_minimum(numbers: list[int]) -> int | None:
-    raise NotImplementedError("Implement this drill.")
+    if not numbers:
+        return None
+
+    min_so_far = numbers[0]
+    index_minimum = 0
+
+    for i in range(len(numbers)):
+        if numbers[i] < min_so_far:
+            min_so_far = numbers[i]
+            index_minimum = i
+
+    return index_minimum
+
+
+# O(n) time: each of the n elements is compared with the current minimum once.
+# O(1) auxiliary space: min_so_far, index_minimum, and i use fixed storage
+# under the drill's integer-cost model; range() does not build a list of indices.
