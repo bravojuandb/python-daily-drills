@@ -26,4 +26,18 @@ What must the counter represent after processing any prefix of the list?
 
 
 def count_matches(numbers: list[int], target: int) -> int:
-    raise NotImplementedError("Implement this drill.")
+    counter = 0
+
+    for number in numbers:
+        if number == target:
+            counter += 1
+
+    return counter
+
+
+# O(n) time because time grows proportionally to the number of elements in the array.
+# this means that the loop takes n steps for n elements in the array.
+
+# O(1) auxiliary space because the size of the counter remains constant.
+# the variable counter updates in every coincidence. 
+# The algorithm does not accumulate more than one number.
