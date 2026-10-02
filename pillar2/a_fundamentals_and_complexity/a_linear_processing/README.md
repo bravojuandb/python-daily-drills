@@ -11,11 +11,12 @@ drill adds or transfers one idea; no sorting or hashing is needed here.
 | [01 - Count matches](drill_01_count_matches.py) | Conditional counting | Bridge from Python syntax to traversal and state |
 | [02 - Running total](drill_02_running_total.py) | Accumulation | Each value contributes its amount, rather than one per match |
 | [03 - Find maximum](drill_03_find_maximum.py) | Best-so-far candidate | Update only when a value improves the candidate |
-| [04 - Find minimum](drill_04_find_minimum.py) | Transfer to reversed ordering | Reuse and explain candidate selection with the opposite comparison |
+| [04 - First minimum's position](drill_04_find_minimum.py) | Candidate position and ties | Return the first minimum's index instead of a value |
 | [05 - Second largest](drill_05_second_largest.py) | Two distinct candidates | Maintain their relationship when one changes |
 | [06 - Longest streak](drill_06_longest_streak.py) | State reset at a boundary | Track a current run and its best length; input order matters |
 
-`running_total` returns one final integer, not prefix sums. Maximum and minimum
+`running_total` returns one final integer, not prefix sums. Maximum returns a
+value; minimum returns the zero-based index of its first occurrence. Both
 return `None` for an empty list. Second largest means the second **distinct**
 value and returns `None` when fewer than two distinct values exist. Longest
 streak counts adjacent matches for a supplied target.
@@ -30,6 +31,7 @@ These rules apply to all six drills:
 - Return the result without changing the input or printing.
 - Use one explicit `for` loop and scalar state to practice traversal and
   updates. `len()`, indexing, comparisons, and arithmetic are allowed.
+  Drill 04 also permits `range()` and `enumerate()` to traverse with indices.
 - Do not use sorting, slicing, extra collections, recursion, comprehensions,
   or helpers that perform the traversal for you. This includes `sum()`,
   `min()`, `max()`, `list.count()`, `Counter`, `reduce()`, `filter()`, and

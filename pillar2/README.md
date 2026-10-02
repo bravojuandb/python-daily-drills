@@ -16,7 +16,7 @@ It contains six unsolved drills:
 | 01 | [Count matches](a_fundamentals_and_complexity/a_linear_processing/drill_01_count_matches.py) | Traverse and count matching values |
 | 02 | [Running total](a_fundamentals_and_complexity/a_linear_processing/drill_02_running_total.py) | Accumulate one final total |
 | 03 | [Find maximum](a_fundamentals_and_complexity/a_linear_processing/drill_03_find_maximum.py) | Maintain the greatest value seen |
-| 04 | [Find minimum](a_fundamentals_and_complexity/a_linear_processing/drill_04_find_minimum.py) | Transfer candidate selection to the opposite ordering |
+| 04 | [First minimum's position](a_fundamentals_and_complexity/a_linear_processing/drill_04_find_minimum.py) | Track a candidate's index and preserve the first occurrence on ties |
 | 05 | [Second largest](a_fundamentals_and_complexity/a_linear_processing/drill_05_second_largest.py) | Maintain two distinct candidates |
 | 06 | [Longest streak](a_fundamentals_and_complexity/a_linear_processing/drill_06_longest_streak.py) | Track a current run and the longest seen |
 
