@@ -28,4 +28,18 @@ initialization handle an all-negative list?
 
 
 def find_maximum(numbers: list[int]) -> int | None:
-    raise NotImplementedError("Implement this drill.")
+    if not numbers:
+        return None
+
+    max_num_so_far = numbers[0]
+
+    for current in numbers:
+        if current > max_num_so_far:
+            max_num_so_far = current
+
+    return max_num_so_far
+
+
+# O(n) time: each element is compared with the current maximum once.
+# O(1) auxiliary space: only the candidate and current element are stored.
+
