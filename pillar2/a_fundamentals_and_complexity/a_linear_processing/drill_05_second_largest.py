@@ -29,4 +29,21 @@ maximum appears?
 
 
 def second_largest(numbers: list[int]) -> int | None:
-    raise NotImplementedError("Implement this drill.")
+    if not numbers:
+        return None
+
+    maior = None
+    second_maior = None
+
+    for current in numbers:
+        if maior is None or current > maior:
+            second_maior = maior
+            maior = current
+        elif current < maior and (second_maior is None or current > second_maior):
+            second_maior = current
+
+    return second_maior
+
+
+# O(n) time: n is the input length, and each element is visited once.
+# O(1) auxiliary space: only two candidates and the loop variable are stored.
