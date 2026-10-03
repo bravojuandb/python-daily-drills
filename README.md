@@ -6,30 +6,26 @@ A structured collection of Python exercises focused on data manipulation, proble
 
 The exercises are organized into four foundational areas, which I call pillars:
 
-- Fluency & Logic
-- Data Structures & Problem Solving
-- Scripting & Automation
-- Project-like Drills & Systems
-
-Each pillar is foundational to working with data in Python.
+- Pillar 1: Fluency & Logic
+- Pillar 2: Data Structures & Problem Solving
+- Pillar 3: Applied Data Processing & Integration
+- Pillar 4: Project-like Drills & Systems
 
 ## Current repository status
 
 Pillar 1 is established. Pillar 2's new curriculum begins with
 [Linear Processing](pillar2/a_fundamentals_and_complexity/a_linear_processing/README.md)
-under Fundamentals & Complexity. Its six drills have prompts and unsolved
-function templates; the remaining curriculum is planned. Existing code and
-templates do not establish that an exercise has been verified or understood.
+under Fundamentals & Complexity. The remaining curriculum is planned.
 
-Previous Pillar 2 material, including unfinished drills and its chapter tests,
-is preserved locally in `archive/pillar2/legacy1/` and
-`archive/pillar2/legacy2/`. The `archive/` directory is ignored by Git and is
-not included in new clones.
+Pillar 3 intends covering files, pandas, reliable scripts, APIs,
+databases, Parquet, and PySpark. Its chapter directories and drills are planned.
+See the [Pillar 3 guide](pillar3/README.md) for priorities and progression.
 
-Pillars 3 and 4 are incomplete and will be reviewed later. Their current folders and README files are placeholders for topics I plan to develop.
+Pillar 4 remains a roadmap for integrated data systems.
 
 Pillar 1 uses numbered chapters. Pillar 2 uses three curricular layers:
-algorithmic family, pattern, and progressive drills. Families and patterns
+algorithmic family, pattern, and progressive drills. Pillar 3's planned structure
+uses chapter, subchapter, and progressive drills. Families and patterns
 have letter prefixes; drills use local numbering. For example:
 `pillar2/a_fundamentals_and_complexity/a_linear_processing/drill_01_count_matches.py`.
 The names preserve order while remaining valid as importable Python modules.
@@ -62,7 +58,7 @@ Think in Python without stumbling on syntax.
 - [Contents](pillar1/README.md)
 
 
-### Pillar 2: Data Structures & Problem Solving (Under Restructuring)
+### Pillar 2: Data Structures & Problem Solving
 Develop algorithmic thinking by selecting appropriate data structures, recognizing reusable processing patterns, and evaluating solution tradeoffs.  
 - **What it covers:** Data-structure selection, filtering and aggregation, searching and ranking, sequence and graph traversal, recursion, complexity analysis, performance tradeoffs, and applied data-processing challenges.  
 - **Available now:** Six Linear Processing drills: count matches, running total, maximum, first minimum's position, second largest distinct value, and longest streak.
@@ -70,14 +66,17 @@ Develop algorithmic thinking by selecting appropriate data structures, recognizi
 - [Contents](pillar2/README.md)
 
 
-### Pillar 3: Scripting & Automation (Incomplete—Under Review)
-Use Python to do real work with files, APIs, and data.  
-- **What it covers:**  
-  - [Pandas as a tool](pillar3/tabular_data_cleaning/README.md)
-  - File parsing (CSV, JSON, YAML, Parquet)  
-  - CLI tools with `argparse`  
-  - Logging, error handling, testing  
-  - Connecting to databases and APIs  
+### Pillar 3: Applied Data Processing & Integration
+Read, clean, combine, validate, and deliver data through reproducible Python tasks.
+
+- **Core:** CSV/JSON, pandas and Excel, joins and aggregation, testing, reliable
+  scripts, HTTP ingestion, PostgreSQL integration, and Parquet.
+- **Extensions:** Pandera, local processing costs, FastAPI, S3, optional DuckDB,
+  and PySpark after its prerequisites.
+- **Available now:** The curriculum and recommended learning route. The new
+  exercise files have not been created.
+- **Scope:** Deeper SQL practice belongs in a separate SQL repository;
+  deployment, orchestration, and operating complete systems belong in Pillar 4.
 - [Contents](pillar3/README.md)
 
 
