@@ -29,4 +29,19 @@ also include a streak ending at the last element?
 
 
 def longest_streak(numbers: list[int], target: int) -> int:
-    raise NotImplementedError("Implement this drill.")
+    longest = 0
+    current = 0
+
+    for number in numbers:
+        if number == target:
+            current += 1
+            if current > longest:
+                longest = current
+        else:
+            current = 0
+
+    return longest
+
+
+# O(n) time: n is the input length, and every element is visited once.
+# O(1) auxiliary space: only two counters and the loop variable are stored.
