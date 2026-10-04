@@ -1,6 +1,6 @@
 # Python Daily Drills 
 
-[![Tests and lint](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml/badge.svg)](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml)
+[![Tests and Lint](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml/badge.svg)](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml)
 
 A structured collection of Python exercises focused on data manipulation, problem-solving, automation, and data systems.
 
@@ -17,9 +17,9 @@ Pillar 1 is established. Pillar 2's new curriculum begins with
 [Linear Processing](pillar2/a_fundamentals_and_complexity/a_linear_processing/README.md)
 under Fundamentals & Complexity. The remaining curriculum is planned.
 
-Pillar 3 intends covering files, pandas, reliable scripts, APIs,
-databases, Parquet, and PySpark. Its chapter directories and drills are planned.
-See the [Pillar 3 guide](pillar3/README.md) for priorities and progression.
+Pillar 3 starts with pandas and progresses toward data integration and PySpark.
+Its chapter directories and drills are planned.
+See the [Pillar 3 guide](pillar3/README.md) for the study order.
 
 Pillar 4 remains a roadmap for integrated data systems.
 
@@ -69,14 +69,10 @@ Develop algorithmic thinking by selecting appropriate data structures, recognizi
 ### Pillar 3: Applied Data Processing & Integration
 Read, clean, combine, validate, and deliver data through reproducible Python tasks.
 
-- **Core:** CSV/JSON, pandas and Excel, joins and aggregation, testing, reliable
-  scripts, HTTP ingestion, PostgreSQL integration, and Parquet.
-- **Extensions:** Pandera, local processing costs, FastAPI, S3, optional DuckDB,
-  and PySpark after its prerequisites.
-- **Available now:** The curriculum and recommended learning route. The new
-  exercise files have not been created.
-- **Scope:** Deeper SQL practice belongs in a separate SQL repository;
-  deployment, orchestration, and operating complete systems belong in Pillar 4.
+- **Study order:** Pandas → Transformations & Excel → Reliable Scripts & Validation
+  → API Ingestion → Database Integration → Parquet & Processing Costs
+  → FastAPI & S3 → PySpark.
+- **Available now:** The curriculum. The new exercise files have not been created.
 - [Contents](pillar3/README.md)
 
 
