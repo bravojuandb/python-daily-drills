@@ -28,4 +28,25 @@ import pandas as pd
 
 
 def create_inventory(store_ids: list[str], units: list[int]) -> pd.DataFrame:
-    raise NotImplementedError
+    df = pd.DataFrame({
+        "store_id": store_ids,
+        "units": units,
+    })
+    return df
+
+
+if __name__ == "__main__":
+    populated = create_inventory(["001", "002"], [4, 0])
+    empty = create_inventory([], [])
+
+    assert populated.shape == (2, 2)
+    assert empty.shape == (0, 2)
+
+    for name, df in (("populated", populated), ("empty", empty)):
+        assert list(df.columns) == ["store_id", "units"]
+        print("")
+        print(name)
+        print("shape:", df.shape)
+        print("columns:", df.columns)
+        print("dtypes:", df.dtypes)
+        print("index:", df.index)
