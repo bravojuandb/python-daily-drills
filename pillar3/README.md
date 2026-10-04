@@ -9,7 +9,7 @@ Chapter and subchapter letters follow the learning sequence.
 
 | Chapter | Focus |
 | --- | --- |
-| A — Pandas Foundations & Cleaning | DataFrames, CSV, missing values, text, types, identifiers |
+| [A — Pandas Foundations & Cleaning](a_pandas_foundations_and_cleaning/README.md) | DataFrames, CSV, missing values, text, types, identifiers |
 | B — Tabular Transformations & Excel | Aggregation, joins, dates, duplicates, workbooks |
 | C — Reliable Scripts & Validation | Tests, environments, JSON, CLI, errors, Pandera |
 | D — API Ingestion | HTTP requests, pagination, retries, saved responses |
@@ -24,9 +24,9 @@ Practise checks from the first drill; C formalizes testing and reproducibility.
 
 ## Status and scope
 
-The plan contains **115 drills in A–H and 9 supporting drills**. Chapter folders
-and exercise files have not been created. Previous work remains locally in the
-Git-ignored `archive/pillar3/`.
+The plan contains **115 drills in A–H and 9 supporting drills**. Chapter A has
+**13 unsolved templates**; the other chapters remain planned. Previous work
+remains locally in the Git-ignored `archive/pillar3/`.
 
 Introduce dependencies per block; the root `requirements.txt` only includes
 pytest and Ruff. Deeper SQL belongs in the separate SQL repository; deployment

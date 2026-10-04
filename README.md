@@ -18,13 +18,13 @@ Pillar 1 is established. Pillar 2's new curriculum begins with
 under Fundamentals & Complexity. The remaining curriculum is planned.
 
 Pillar 3 starts with pandas and progresses toward data integration and PySpark.
-Its chapter directories and drills are planned.
+Its first chapter has 13 unsolved drill templates; the remaining chapters are planned.
 See the [Pillar 3 guide](pillar3/README.md) for the study order.
 
 Pillar 4 remains a roadmap for integrated data systems.
 
 Pillar 1 uses numbered chapters. Pillar 2 uses three curricular layers:
-algorithmic family, pattern, and progressive drills. Pillar 3's planned structure
+algorithmic family, pattern, and progressive drills. Pillar 3's structure
 uses chapter, subchapter, and progressive drills. Families and patterns
 have letter prefixes; drills use local numbering. For example:
 `pillar2/a_fundamentals_and_complexity/a_linear_processing/drill_01_count_matches.py`.
@@ -72,7 +72,7 @@ Read, clean, combine, validate, and deliver data through reproducible Python tas
 - **Study order:** Pandas → Transformations & Excel → Reliable Scripts & Validation
   → API Ingestion → Database Integration → Parquet & Processing Costs
   → FastAPI & S3 → PySpark.
-- **Available now:** The curriculum. The new exercise files have not been created.
+- **Available now:** [13 Pandas Foundations & Cleaning templates](pillar3/a_pandas_foundations_and_cleaning/README.md); later chapters are planned.
 - [Contents](pillar3/README.md)
 
 
