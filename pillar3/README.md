@@ -27,7 +27,3 @@ Practise checks from the first drill; C formalizes testing and reproducibility.
 The plan contains **115 drills in A–H and 9 supporting drills**. Chapter A has
 **13 unsolved templates**; the other chapters remain planned. Previous work
 remains locally in the Git-ignored `archive/pillar3/`.
-
-Introduce dependencies per block; the root `requirements.txt` only includes
-pytest and Ruff. Deeper SQL belongs in the separate SQL repository; deployment
-and complete data systems belong in [Pillar 4](../pillar4/README.md).
