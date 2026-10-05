@@ -27,4 +27,25 @@ import pandas as pd
 
 
 def select_columns(frame: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
-    raise NotImplementedError
+    present_cols = list(frame.columns)
+
+    # This is optional in case a custom message is needed. 
+    # Pandas already raises KeyError when selecting absent columns
+    for column in columns:
+        if column not in present_cols:
+            raise KeyError(f"requested column: --{column}-- is absent")
+
+    return frame[columns]
+
+
+if __name__ == "__main__":
+    store_ids = ["001", "002", "003"]
+    units = [4, 5, 6]
+
+    df = pd.DataFrame({
+        "store_id": store_ids,
+        "units": units,
+    })
+
+    result = select_columns(df, [])
+    print(result.shape)
