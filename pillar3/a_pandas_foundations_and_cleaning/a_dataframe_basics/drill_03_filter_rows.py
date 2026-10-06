@@ -27,4 +27,14 @@ import pandas as pd
 
 
 def filter_units(frame: pd.DataFrame, minimum: int) -> pd.DataFrame:
-    raise NotImplementedError
+    above_min = frame[frame["units"] >= minimum]
+
+    return above_min
+
+
+if __name__ == "__main__":
+    df = pd.DataFrame({"units": [4, 0, 4]}, index=[10, 30, 20])
+
+    print(filter_units(df, 4))
+    print(filter_units(df, 5))
+    print(filter_units(df, 0))
