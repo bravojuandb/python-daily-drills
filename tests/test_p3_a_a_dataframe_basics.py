@@ -1,10 +1,12 @@
-import pytest
 import pandas as pd
+import pytest
 
 from pillar3.a_pandas_foundations_and_cleaning.a_dataframe_basics import (
     drill_01_create_and_inspect as create_and_inspect,
     drill_02_select_columns as select_columns,
+    drill_03_filter_rows as filter_rows,
 )
+
 
 def test_create_inventory_returns_dataframe():
     result = create_and_inspect.create_inventory(["001", "002"], [4, 0])
@@ -35,20 +37,13 @@ def test_create_inventory_returns_expected_with_empty_lists():
 
 
 def test_select_columns_returns_expected():
-    """expected shape and values, is a df, columns with supplied order """
+    """Verify DataFrame shape, values, and requested column order."""
 
-    df = pd.DataFrame({
-        "store_id": ["001", "002", "003"],
-        "units": [4, 5, 6]
-    })
+    df = pd.DataFrame({"store_id": ["001", "002", "003"], "units": [4, 5, 6]})
 
-    result = select_columns.select_columns(
-        df, ["units", "store_id"]
-    )
+    result = select_columns.select_columns(df, ["units", "store_id"])
 
-    result_one_col = select_columns.select_columns(
-        df, ["store_id"]
-    )
+    result_one_col = select_columns.select_columns(df, ["store_id"])
 
     assert result.shape == (3, 2)
     assert result["units"].tolist() == [4, 5, 6]
@@ -77,11 +72,34 @@ def test_select_columns_empty_selection_preserves_index():
 
 
 def test_select_column_raises_KeyError_for_absent_column():
-
-    df = pd.DataFrame({
-        "store_id": ["001", "002", "003"],
-        "units": [4, 5, 6]
-    })
+    df = pd.DataFrame({"store_id": ["001", "002", "003"], "units": [4, 5, 6]})
 
     with pytest.raises(KeyError):
         select_columns.select_columns(df, ["date"])
+
+
+def test_filter_units_returns_expected():
+    """Verify selected values, column names, and original row labels/order."""
+    df = pd.DataFrame({"units": [4, 0, 4]}, index=[10, 30, 20])
+
+    expected_column_names = ["units"]
+    expected_values = [4, 4]
+    expected_indexes = [10, 20]
+
+    result = filter_rows.filter_units(df, 4)
+
+    assert list(result.columns) == expected_column_names
+    assert result["units"].tolist() == expected_values
+    assert result.index.tolist() == expected_indexes
+
+
+def test_filter_units_no_matches_returns_empty_table():
+    """No matching rows leaves the column present and the row index empty."""
+    df = pd.DataFrame({"units": [4, 0, 4]}, index=[10, 30, 20])
+
+    result = filter_rows.filter_units(df, 5)
+
+    assert isinstance(result, pd.DataFrame)
+    assert result.shape == (0, 1)
+    assert result.columns.tolist() == ["units"]
+    assert result.index.tolist() == []
