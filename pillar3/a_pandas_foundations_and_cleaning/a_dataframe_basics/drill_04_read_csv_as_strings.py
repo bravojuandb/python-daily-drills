@@ -31,4 +31,19 @@ import pandas as pd
 
 
 def read_csv_as_strings(path: str | Path) -> pd.DataFrame:
-    raise NotImplementedError
+
+    df = pd.read_csv(
+        path, sep=",", 
+        header=0, 
+        dtype="string", 
+        encoding="utf-8",
+        keep_default_na=False)
+    return df
+
+if __name__ == "__main__":
+    root = Path(__file__).parent.parent.parent
+    file = root / "utils" / "inventory.csv"
+
+    result = read_csv_as_strings(file)
+    print(result)
+    print(result.dtypes)
