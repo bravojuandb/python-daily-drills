@@ -5,6 +5,7 @@ from pillar3.a_pandas_foundations_and_cleaning.a_dataframe_basics import (
     drill_01_create_and_inspect as create_and_inspect,
     drill_02_select_columns as select_columns,
     drill_03_filter_rows as filter_rows,
+    drill_04_read_csv_as_strings as read_csv,
 )
 
 
@@ -103,3 +104,44 @@ def test_filter_units_no_matches_returns_empty_table():
     assert result.shape == (0, 1)
     assert result.columns.tolist() == ["units"]
     assert result.index.tolist() == []
+
+
+def test_read_csv_as_strings_returns_expected(tmp_path):
+    """Verify CSV fields retain their text, including leading zeros, whitespace,
+    quoted commas, empty strings, and NA literals, with string dtype in every column.
+    """
+
+    csv_path = tmp_path / "inventory.csv"
+    csv_path.write_text(
+        'store_id,units,note\n'
+        '001,4,NA\n'
+        '002,0,NULL\n'
+        '003,,"  Keep these spaces  "\n'
+        '004,12,"Delivery, morning"\n'
+        '005,7,\n',
+        encoding="utf-8"
+    )
+
+    result = read_csv.read_csv_as_strings(csv_path)
+
+
+    assert result["store_id"].tolist() == ["001", "002", "003", "004", "005"]
+    assert result["units"].tolist() == ["4", "0", "", "12", "7"]
+    assert result["note"].tolist() == ["NA", "NULL", "  Keep these spaces  ", "Delivery, morning", ""]
+    assert all(dtype == "string" for dtype in result.dtypes)
+    assert not result.isna().any().any()
+
+
+def test_read_csv_as_strings_returns_zero_rows_for_header_only_csv(tmp_path):
+
+    csv_path = tmp_path / "header-only_inventory.csv"
+
+    csv_path.write_text(
+        'store_id,units,note\n',
+        encoding="utf-8"
+    )
+
+    result = read_csv.read_csv_as_strings(csv_path)
+    assert result.columns.tolist() == ["store_id", "units", "note"]
+    assert result.shape == (0, 3)
+    assert all(dtype == "string" for dtype in result.dtypes)
