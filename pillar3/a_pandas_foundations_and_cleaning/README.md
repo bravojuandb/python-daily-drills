@@ -11,8 +11,6 @@ Start with Python functions, lists, dictionaries, and an environment with pandas
 | [b — Missing values and text](b_missing_values_and_text/README.md) | 5 | Missingness, column rules, normalization, validation |
 | [c — Types and identifiers](c_types_and_identifiers/README.md) | 4 | Nullable integers, identifiers, conversion reports |
 
-All 13 files are unsolved templates. Replace `NotImplementedError` with your
-attempt. Read the contract and propose an approach before opening optional hints.
 
 ## Shared rules
 
@@ -43,5 +41,4 @@ Include temporary masks, copies, and returned data; count more than API calls.
 These original prompts use the concepts in the [official pandas tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html)
 and Wes McKinney's *Python for Data Analysis*, [chapter 5](https://wesmckinney.com/book/pandas-basics)
 and [chapter 7](https://wesmckinney.com/book/data-cleaning). Subchapter guides link
-the relevant sections. Follow the API documentation for your installed version.
-Pandas is required; the repository's root `requirements.txt` does not install it.
+the relevant sections.

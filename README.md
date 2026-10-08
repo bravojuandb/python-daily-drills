@@ -2,45 +2,48 @@
 
 [![Tests and Lint](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml/badge.svg)](https://github.com/bravojuandb/python-daily-drills/actions/workflows/quality.yml)
 
-A structured collection of Python exercises focused on data manipulation, problem-solving, automation, and data systems.
+This is a personal Python practice repository focused on problem-solving and data processing. It contains exercise prompts, my implementations, and tests, alongside planned and unfinished drills.
 
 The exercises are organized into four foundational areas, which I call pillars:
 
-- Pillar 1: Fluency & Logic
-- Pillar 2: Data Structures & Problem Solving
-- Pillar 3: Applied Data Processing & Integration
-- Pillar 4: Project-like Drills & Systems
+- **Pillar 1**: Fluency & Logic
+- **Pillar 2**: Data Structures & Problem Solving
+- **Pillar 3**: Applied Data Processing & Integration
+- **Pillar 4**: Project-like Drills & Systems
 
 ## Current repository status
 
-Pillar 1 is established. Pillar 2's new curriculum begins with
+*Pillar 1* is established.
+
+*Pillar 2*'s new curriculum begins with
 [Linear Processing](pillar2/a_fundamentals_and_complexity/a_linear_processing/README.md)
 under Fundamentals & Complexity. The remaining curriculum is planned.
+See the [Pillar 2 guide](pillar2/README.md) for further reference.
 
-Pillar 3 starts with pandas and progresses toward data integration and PySpark.
-Its first chapter has 13 unsolved drill templates; the remaining chapters are planned.
+*Pillar 3* starts with pandas and progresses toward data integration and PySpark.
+Its first chapter has 13 drills, and some drills are already solved; the remaining chapters are planned.
 See the [Pillar 3 guide](pillar3/README.md) for the study order.
 
-Pillar 4 remains a roadmap for integrated data systems.
+*Pillar 4* remains a roadmap for integrated data systems.
 
-Pillar 1 uses numbered chapters. Pillar 2 uses three curricular layers:
-algorithmic family, pattern, and progressive drills. Pillar 3's structure
+*Pillar 1* uses numbered chapters. *Pillar 2* uses three curricular layers:
+algorithmic family, pattern, and progressive drills. *Pillar 3*'s structure
 uses chapter, subchapter, and progressive drills. Families and patterns
 have letter prefixes; drills use local numbering. For example:
 `pillar2/a_fundamentals_and_complexity/a_linear_processing/drill_01_count_matches.py`.
 The names preserve order while remaining valid as importable Python modules.
 
-Each smaller group consists of exercises—called drills—that follow this structure:
+Recent drills follow this general structure:
 
 ```
 """
-Drill n - Demo Prompt
+Drill n - Title
 
-Prompt description, requirements, goal, constraints.
+Prompt description, requirements, goal, constraints, contract.
 
 Example: input vs. output
 
-Complexity check: Define big O notation for time and space
+Complexity check or Cost check.
 
 Thinking goal: desired takeaway.
 """
@@ -76,7 +79,7 @@ Read, clean, combine, validate, and deliver data through reproducible Python tas
 - [Contents](pillar3/README.md)
 
 
-### Pillar 4: Project-like Drills & Systems (Incomplete—Under Review)
+### Pillar 4: Project-like Drills & Systems (Under Review)
 End-to-end pipeline-like systems.  
 - **What it covers:**  
   - Full ETL/ELT pipelines  

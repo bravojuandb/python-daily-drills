@@ -21,9 +21,3 @@ Chapter and subchapter letters follow the learning sequence.
 Prioritize A–F, then extend with G–H. Subprocess (C) and DuckDB (F) are optional.
 Files & Formats is a separate support block, used as needed.
 Practise checks from the first drill; C formalizes testing and reproducibility.
-
-## Status and scope
-
-The plan contains **115 drills in A–H and 9 supporting drills**. Chapter A has
-**13 unsolved templates**; the other chapters remain planned. Previous work
-remains locally in the Git-ignored `archive/pillar3/`.
