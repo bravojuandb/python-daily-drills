@@ -27,4 +27,24 @@ import pandas as pd
 
 
 def trim_and_normalize_blanks(values: pd.Series) -> pd.Series:
-    raise NotImplementedError
+    values = values.str.strip().replace("", pd.NA)
+
+    return values
+
+
+if __name__ == "__main__":
+
+    location = ["  North  Hub  ", "\n", "", "\t", pd.NA]
+    location = pd.Series(location, dtype="string", name= "location")
+
+    print("\nSeries before processing:")
+    print(location.dtype)
+    print(isinstance(location, pd.Series))
+    print(location.map(repr))
+
+    result = trim_and_normalize_blanks(location)
+
+    print("\nSeries after processing:")
+    print(result.dtype)
+    print(isinstance(result, pd.Series))
+    print(result.map(repr))
