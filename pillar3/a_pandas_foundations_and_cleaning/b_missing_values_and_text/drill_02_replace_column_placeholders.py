@@ -30,4 +30,31 @@ import pandas as pd
 def replace_column_placeholders(
     frame: pd.DataFrame, markers: dict[str, set[str]]
 ) -> pd.DataFrame:
-    raise NotImplementedError
+    
+    frame_copy = frame.copy()
+
+    for column, placeholders in markers.items():
+        frame_copy[column] = frame[column].replace(placeholders, pd.NA)
+
+    return frame_copy
+
+
+
+if __name__ == "__main__":
+    
+    frame = pd.DataFrame(
+        {
+            "zone": ["North", "NA", " NA ", "unknown", pd.NA],
+            "phone": ["555-1234", "N/A", "", "555-9876", pd.NA],
+            "note": ["NA", "Keep this", "", "unknown", "ok"],
+        },
+        dtype="string",
+        index=[10, 20, 30, 40, 50],
+    )
+
+    markers = {
+        "zone": {"NA", "unknown"},
+        "phone": {"N/A", ""},
+    }
+
+    print(replace_column_placeholders(frame, markers))
