@@ -27,4 +27,36 @@ import pandas as pd
 
 
 def normalize_status(values: pd.Series) -> pd.Series:
-    raise NotImplementedError
+
+    values = values.str.strip()
+    values = values.str.lower()
+    values = values.replace({"wip": "pending", "done": "closed"})
+
+    # Left outside the dictionary, it's a different rule
+    values = values.replace("", pd.NA)
+
+    return values
+
+
+
+if __name__ == "__main__":
+
+    examples = [
+        ([" WIP ", "Done", "OPEN"], ["pending", "closed", "open"]),
+        (["  On  Hold  ", "done!", pd.NA], ["on  hold", "done!", pd.NA]),
+        ([" ", "NA"], [pd.NA, "na"]),
+    ]
+
+    for raw, expected_list in examples:
+        values = pd.Series(raw, dtype="string", name="status", index=[10, 20, 30][: len(raw)])
+        original = values.copy()
+
+        result = normalize_status(values)
+        expected = pd.Series(expected_list, dtype="string", name="status", index=values.index)
+
+        # Checks values, missing values, dtype, index and name in one go
+        pd.testing.assert_series_equal(result, expected)
+        # Input must be unchanged
+        pd.testing.assert_series_equal(values, original)
+
+    print("All examples pass")
