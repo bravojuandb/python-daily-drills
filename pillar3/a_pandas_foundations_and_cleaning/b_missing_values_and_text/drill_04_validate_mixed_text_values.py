@@ -28,4 +28,34 @@ import pandas as pd
 
 
 def validate_mixed_text_values(values: pd.Series) -> pd.Series:
-    raise NotImplementedError
+    pattern = r"[0-9]+[A-Za-z]?"
+    flags = values.str.fullmatch(pattern)
+    flags = flags.fillna(False)
+    flags = flags.astype("bool")
+
+    return flags
+
+if __name__ == "__main__":
+
+    examples = [
+        (["12", "003b", "A12", pd.NA], [True, True, False, False]),
+        (["12AB", " 12", "12.0", "", "１２"], [False, False, False, False, False]),
+        ([], []),
+    ]
+
+    for raw, expected_list in examples:
+        index = [10, 20, 30, 40, 50][: len(raw)]
+        values = pd.Series(raw, dtype="string", name="ref", index=index)
+        original = values.copy()
+
+        result = validate_mixed_text_values(values)
+        expected = pd.Series(expected_list, dtype="bool", name="ref", index=index)
+
+        # Checks flags, dtype "bool", index and name in one go
+        pd.testing.assert_series_equal(result, expected)
+        # Input must be unchanged
+        pd.testing.assert_series_equal(values, original)
+
+    print("All examples pass")
+
+
